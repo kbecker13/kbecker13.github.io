@@ -1,44 +1,21 @@
-<body>
-<h1> Python Fetch Example</h1>
-<p id='embed'>{{embed}}</p>
-<p id='mylog'/>
-<body>
+<!DOCTYPE html>
+<html>
+  <head>    
+  </head>
+  <body>
+    <input type="button" id='script' name="scriptbutton" value=" Run Script " onclick="goPython()">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <script>
-        // section to log into element instead console
-        var actuallog = console.log
-        
-        console.log = (...args) => {
-            args.map(arg => document.querySelector("#mylog").innerHTML += arg + '<br>')
-          }
-        
-        
-        // substitution test
-        document.getElementById('embed').innerHTML = "{{embed}}"
-        
-        
-        // fetch json
-          fetch('/test')
-              .then(function (response) {
-                  return response.json();
-              }).then(function (text) {
-                  console.log('GET response text:');
-                  console.log(text); // Print the greeting as text
-                  console.log(JSON.stringify(text))
-                  console.log('')
-              });
-        
-        
-        
-        // fetch results
-          fetch('/getdata/10/33')
-              .then(function (response) {
-                  return response.text();
-              }).then(function (text) {
-                  console.log('GET response text:');
-                  console.log(text); // Print the greeting as text
-              });
-        
-        
-        
-        
-        </script>
+        function goPython(){
+            $.ajax({
+              url: "fetchTest.py",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            });
+        }
+    </script>
+  </body>
+</html>
