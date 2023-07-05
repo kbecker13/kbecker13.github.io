@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="JournalBuilder.css">
+	</head>
+	<body>
+		<div>
+			<form id="start" name="start" onsubmit="return false;" style="position:absolute">
+					<label for="numCards">Number of cards:</label>
+					<input type="number" id="numCards" name="numCards" min="1" max="50" value="3">
+					<input type="button" value="Go" onclick="init(event)">
+			</form>
+			<img src="Assets/drawCard.gif" height="400px"/>
+		</div>
+		<div id="header">
+			<div id="table">
+				<div class="framed"></div>
+				<div id="locker" class="locked lockable"></div>
+				<div id="tableButtons">
+					<button id="reset" title="Reset layout" class="lockable" onclick="cardLayout()"><img src="Assets/Icons/undo.png" /></button>
+					<button id="plus" title="Increase card size" class="lockable" onclick="cardResize(1)"><img src="Assets/Icons/plus.png" /></button>
+					<button id="minus" title="Decrease card size" class="lockable" onclick="cardResize(-1)"><img src="Assets/Icons/minus.png" /></button>
+					<button id="lock" title="Lock edit" onclick="toggleEdit(event)"><img src="Assets/Icons/lock.png" /></button>
+				</div>
+				<div id="tabletop"></div>
+			</div>
+			<div id="spreadInfo" >
+				<div class="framed"></div>
+				<div id="spreadInfoWrapper">
+					<div id="spreadInfoHeader">
+					<div>
+						<h1 contenteditable="true">The title of your spread</h1>
+						<div>
+							<span id="dateLabel">Date: &nbsp;</span>
+							<input id="dateInput" name="dateInput" type="date" oninput="dateTransfer(event)">
+							<span id="dateOutput" class="printHide"></span>
+						</div>
+					</div>
+					<span id="spreadUrl" contenteditable="true">[optional] spread URL</span>
+				</div>
+				<div id="spreadInfoOuter" class="scrollBox">
+					<div id="spreadInfoInner" class="scrollable"></div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div id="noteBox" class="scrollBox">
+			<div id="notes" class="scrollable">
+				<div id="notesSpacer"></div>
+			</div>
+		</div>
+
+		<!--Templates-->
+		<div id="cardSelectTemplate" class="cardSelect">
+			<div style="display: flex;">
+				<h2>Card</h2>
+				<h2 contenteditable="true" class="meaning">What does this card mean?</h2>
+			</div>
+			<h3 contenteditable="true" class="submeaning">[optional] add more info?</h3>
+			<div class="cardSelectInner">
+				<select class="suits" onchange="suitChanged(event)">
+					<option value="" selected>Pick a suit</option>
+					<option value="Major" >Major</option>
+					<option value="Cups">Cups</option>
+					<option value="Pentacles">Pentacles</option>
+					<option value="Swords">Swords</option>
+					<option value="Wands">Wands</option>
+				</select>
+				<select class="cards" onchange="cardChanged(event)" style="display: none;"></select>
+				<select class="reversal" onchange="reverseCard(event)" style="display: none;">
+					<option value="Upright" >Upright</option>
+					<option value="Reversed" >Reversed</option>
+				</select>
+				<span></span>
+				<button title="Randomize card" onclick="randomCard(event)"><img src="Assets/Icons/newCard.png" /></button>
+			</div>
+		</div>
+
+		<fieldset id = "cardNoteTemplate" class="cardNote">
+			<div class="framed"></div>
+			<legend>Card: <span></span></legend>
+			<div class="scrollBox">
+				<div class="cardNoteInner scrollable">
+					<!-- <div class="shorthand"></div> -->
+					<table class="shorthand">
+						<tr>
+							<th>Upright</th>
+							<td class="upright">test</td>
+						</tr>
+						<tr>
+							<th>Reversed</th>
+							<td class="reversed">test 2</td>
+						</tr>
+					</table>
+					<div class="box">
+						<div class="boxHeader">
+							<button class="collapsible" onclick="toggleSelect(event)">Visual Description</button>
+							<button class="collapsible" onclick="toggleSelect(event)">General Meaning</button>
+							<button class="collapsible" onclick="toggleSelect(event)">Reversed</button>
+							<button class="collapsible" onclick="toggleSelect(event)">Career and Finances</button>
+							<button class="collapsible" onclick="toggleSelect(event)">Love and Relationships</button>
+							<button class="collapsible" onclick="toggleSelect(event)">Health and Spirituality</button>
+						</div>
+						<div class="boxDataWrapper scrollBox">
+							<div class="boxData scrollable"><p></p></div>
+						</div>
+					</div>
+					<span contenteditable="true">[optional] Add your notes here.</span>
+					<a class="cardInfoLink" href="">Click here for more card info</a>
+				</div>
+			</div>
+		</fieldset>
+
+		<div id="cardTemplate" class="cardOuter hoverable" onmousedown="dragMouseDown(event)" onmousemove="hover(event)">
+			<div class="cardInner">
+				<div class="cardBack"><img src="Assets/TarotBack.png" /></div>
+				<div class="cardFront"><img /></div>
+			</div>
+			<div class="cardLabel"></div>
+		</div>
+	</body>
+	<footer>
+		<button id="printView" onclick="printViewToggle(event)" title="Print view"><img src="Assets/Icons/print.png" /></button>
+	</footer>
+</html>
+<script src="TarotRef.js"></script>
+<script src = "JournalBuilder.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
