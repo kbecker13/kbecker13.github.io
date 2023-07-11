@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*#region fonts*/
 @font-face {
   font-family: Mirra;
@@ -480,4 +481,488 @@ footer button img{
 }
 .printHide{
   display: none !important;
+=======
+/*#region fonts*/
+@font-face {
+  font-family: Mirra;
+  src: url("Assets/Fonts/Mirra-Regular.ttf");
+}
+@font-face {
+  font-family: CaviarDreams;
+  src: url("Assets/Fonts/CaviarDreams.ttf");
+}
+/*#endregion*/
+/*#region elements*/
+body{
+  margin:1vw;
+  background-color: #363c47;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color:floralwhite;
+  font-family: CaviarDreams;
+}
+body>div{
+  box-sizing: border-box;
+}
+header{
+  font-size: large;
+}
+footer{
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:1vw;
+  height: 5vh;
+  background-image: linear-gradient(0deg, rgb(0,0,0), transparent);
+  opacity: 20%;
+  color:floralwhite;
+  z-index: 11;
+  transition:all .5s;
+}
+footer:hover{
+  opacity: 70%;
+}
+input[type="button"],button{
+  background: rgb(201 159 108);
+  outline:none;
+  border:none;
+  padding: 2px;
+  border-radius: 3px;
+  transition:all .2s;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+::-webkit-resizer {
+  display: none;
+}
+a{
+  color:floralwhite;
+  font-size:.8rem;
+  margin-top:5px;
+  margin:auto;
+}
+/*#endregion*/
+
+/*#region text styling*/
+h1{
+  font-size: 1.5rem;
+  font-family: Mirra;
+  color: rgb(20, 19, 19);
+  margin: 0px 0px 5px;
+  padding:2px;
+}
+h2{
+  font-size: 1.2rem;
+  font-family:Mirra;
+  color: rgb(204, 159, 104);
+  margin: 0px 0px 5px;
+}
+h3{
+  font-size: 1rem;
+  font-family: CaviarDreams;
+  color: rgb(199, 199, 199);
+  margin: 0px 0px 5px;
+}
+/*#endregion*/
+#start{
+  z-index: 10;
+}
+#header{
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 36vh;
+}
+#table {
+  position: relative;
+  width:40%;
+  overflow:hidden;
+  padding: 11px;
+  display: block;
+  resize: both;
+}
+#tabletop{
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  position: relative;  
+}
+#locker{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:block; 
+  z-index: 3;
+}
+#tableButtons {
+  position:absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 4;
+  display:flex;
+  flex-direction: column;
+}
+#tableButtons>button {
+  width: 15px;
+  height: 15px;
+  margin:2px;
+  padding: 0;
+  justify-content: center;
+  background: transparent;
+}
+#tableButtons>button>img{
+  height: 15px;
+  width:15px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+#spreadInfo{
+  position: relative;
+  flex-grow: 1;
+  padding: 11px 20px;
+  width:60%;
+}
+#spreadInfoWrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#spreadInfoHeader{
+  width: 100%;
+  max-height: 30%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#spreadInfoHeader h1{
+  flex-grow: 2;
+}
+#spreadInfoHeader div{
+  min-width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#dateInput{
+  background-color: rgba(177, 177, 177, .3);
+  color: floralwhite;
+  padding:3px;
+  border: none;
+}
+#dateOutput{
+  display: inline;
+}
+::-webkit-calendar-picker-indicator{
+  background-color: transparent;
+  background-image: url("Assets/Icons/calendar.png");
+  padding-right: 3px;
+  cursor: pointer;
+}
+#spreadUrl{
+  width: 100%;
+}
+#spreadInfoOuter{
+  min-height: 0;
+  width: 100%;
+  margin-top: 1%;
+}
+#spreadInfoInner{
+  flex-direction: column;
+  display:flex;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+#noteBox{
+  height: 62vh;
+}
+#notes{
+  width: 100%;
+  position: relative;
+  flex-grow:1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#notesSpacer{
+  height: 5vh;
+  width: 100%;
+  visibility: hidden;
+}
+.framed{
+  position: absolute;
+  z-index: 5;
+  display: block;
+  border-image: url(Assets/Frame.png) 55 stretch;
+  border-style: solid;
+  border-width: 25px;
+  box-sizing: border-box;
+  top: 5px;
+  bottom: 5px;/*setting absolute location ignores padding*/
+  left: 5px;/*whereas width/height 100% ignore padding when calculating size, but use padding for positioning*/
+  right: 5px;/*resulting in overflow if you want any padding at all*/
+  pointer-events: none;
+}
+.locked{
+  display: none !important;
+}
+
+/*#region card*/
+.cardOuter{
+  display: none;
+  border-radius:30px;
+  overflow:hidden;
+  position:absolute;
+  perspective: 1000px;
+}
+.cardInner{
+  position: absolute;
+  object-fit: none;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  transition: transform .4s;
+  transform-style: preserve-3d;
+  transform:rotateY(0deg);
+}
+.cardFront,.cardBack{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.cardFront img{
+  transition: filter .2s;
+}
+.cardBack img{
+  object-position: -5px -5px;
+}
+.cardLabel{
+  -webkit-text-stroke: 2px rgb(124, 78, 42);
+  color:white;
+  opacity: 50%;
+  font-family: fantasy;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  pointer-events: none;
+}
+.hoverable{
+  z-index: 1;
+}
+.selectedCard{
+  z-index: 2;
+  background: rgb(221, 183, 135);
+}
+.cardOuter:hover>.cardLabel, .selectedCard>.cardLabel{
+  background-color:  rgba(210, 158, 25, .5);
+  opacity: 70%;
+}
+/*#endregion*/
+
+/*#region card select*/
+.cardSelect{
+  display:none;
+  width:100%;
+  flex-wrap:wrap;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding:10px;
+  border: 1px solid;
+  border-image: linear-gradient(rgb(157, 117, 16), rgb(201, 160, 73)) 1;
+  margin: 0px 0px 10px;
+}
+.cardSelect>div{
+  width: 100%;
+  display: flex;
+}
+.cardSelectInner{
+  justify-content: space-between;
+}
+.cardSelectInner>*{
+  flex-grow:0;
+}
+.cardSelectInner select{
+  background-color: rgba(177, 177, 177, .3);
+  border: none;
+  color: floralwhite;
+}
+.cardSelectInner option{
+  background-color: #363C47;
+}
+.cardSelectInner>span{
+  flex-grow: 1;
+}
+.cardSelectInner>button{
+  background: transparent;
+}
+.cardSelectInner>button>img{
+  height: 32px;
+  pointer-events: none;
+}
+/*#endregion*/
+
+/*#region card note*/
+.cardNote{
+  display: none;
+  max-width: 50%;
+  min-width: 380px;
+  height: 62vh;
+  flex: 1;
+  padding: 16px 20PX;
+  border:none;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+}
+.cardNote>.scrollBox{
+  height: 100%;
+}
+.cardNote>.framed{
+  top:-10px;
+}
+.cardNoteInner{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.cardNoteInner>span{
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+  border: 2px inset rgba(255,255,255,.3);
+  background: rgba(255,255,255,.1);
+  margin-top: 10px;
+}
+.cardNote>legend{
+  background-color: #363c47;
+  position: relative;
+  left: 15px;
+  top: 0px;
+  max-width: 85%;
+  height: 1em;
+  z-index: 6;
+  font-size: 1.1em;
+  line-height: .8em;
+}
+.shorthand,td,th{
+  border-collapse: collapse;
+  border: 1px solid rgb(167, 142, 79);
+  box-sizing: border-box;
+  padding:3px;
+}
+td{
+  font-size: small;
+}
+/*#endregion*/
+
+/*#region Card Data box*/
+.box{
+  position:relative;
+  display:none;
+  float:left;
+  margin:10px 0px 0px;
+  flex-wrap: wrap;
+}
+.boxHeader{
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+  background: bisque;
+  border-radius: 3px;
+}
+.collapsible{
+  background-color: rgb(201 159 108);
+  color: white;
+  cursor: pointer;
+  padding: 3px;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width:33.33%;
+  height: 30px;
+  text-align:center;
+  border-radius: 0%;
+}
+.boxDataWrapper{  
+  height:0px;
+  transition:height .3s;
+  overflow: hidden;
+}
+.boxData{
+  outline-offset: -1px;
+  width:100%;
+  display:block;
+  background: rgba(255, 255, 255, 0.1);
+}
+.boxData>p{
+  padding: 0px;
+  margin:0;
+}
+/*#endregion*/
+
+/*#region scrolling*/
+.scrollBox{
+  position: relative;
+}
+.scrollWrapper{
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.scrollable{
+  position: relative;
+}
+.shadowed{
+  position:absolute;
+  width: 100%; height: 100%;
+  border-bottom-width:0px;
+  border-top-width:0px;
+  border-style:solid;
+  border-image: linear-gradient(0deg, rgb(47, 52, 61) 2%, transparent 30%, transparent 70%, rgb(47, 52, 61) 98%) 30%;
+  box-sizing:border-box;
+  z-index:3;
+  pointer-events:none;
+  transition:border .5s;
+}
+.top,.bottom{
+  width:100%;
+  height:20px;
+  visibility:hidden;
+  position:absolute;  
+}
+.top{top:0px;}
+.bottom{bottom:0px;}
+/*#endregion*/
+
+input[type="button"]:hover,button:hover,.selected{
+  background-color: rgb(221, 183, 135);
+}
+#tableButtons>button:hover,.cardSelectInner>button:hover{
+  filter: brightness(2);
+  background-color: transparent;
+}
+footer button, footer button:hover{
+  background-color:transparent;
+}
+footer button img{
+  height: 100%;
+  pointer-events: none;
+}
+.printExpand{
+  height: auto !important;
+}
+.printHide{
+  display: none !important;
+>>>>>>> 1f63558f4c121528c66c23250d0b49eab92e6994
 }
