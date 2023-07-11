@@ -1,0 +1,359 @@
+/*#region Journal Builder Pseudocode
+	Things to fix
+        ...
+    Features to add
+        prettify the "how many cards" form    
+        side header is where we draw the cards
+    	randomize reversed
+        custom cursors for general, rotate and grabbing (palmistry hand!), lock/unlock, random
+        add link to More Info in box buttons
+		Resize button to grow/shrink all cards
+        pretty labels
+        pretty frames https://www.w3schools.com/cssref/css3_pr_border-image.php , https://freefrontend.com/css-border-examples/#:~:text=About%20a%20code-,GRADIENT%20BORDER,-Compatible%20browsers%3A
+        responsive sizing+resizable, esp the cards
+        Print view button that hides all the ugly stuff
+        error message for unsupported browsers and too small: https://www.w3schools.com/howto/howto_css_modals.asp
+        welcome tutorial?
+
+Print view
+    Divs to change
+        Table: set to stop
+        Header:
+            Set title textbox to 
+    Button in bottom right to toggle print view, hides when not hovered,animate ghosting
+
+Header contents
+    Text area for title
+    Text area for subtitle
+    Fieldset: Meanings
+        sets notes header
+        optional submeaning
+ #endregion
+ */
+
+ //#region constants
+    //HTML elements
+    const table = document.getElementById("table");
+    const notes = document.getElementById("notes");
+    const cardTemplate = document.getElementById("cardTemplate");
+    const cardNoteTemplate = document.getElementById("cardNoteTemplate");
+    const editButton = document.getElementById("lock");
+    //card sizes
+    const cardW=299; const cardH=517; const cardPad = 10;
+    //img srcs
+    const suitImages = ["Assets/TarotMajor.png","Assets/TarotCups.png","Assets/TarotPentacles.png","Assets/TarotSwords.png","Assets/TarotWands.png"];
+    const cardBack = "Assets/TarotBack.png"
+    //custom cursors
+    const cursorRot = "Assets/Icons/refresh.png";
+    //card data
+    const deck = [];
+    const cardSuits=["Pick a suit","Major","Cups","Pentacles","Swords","Wands"];
+    const cardsMinor=["Pick a card","Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
+    const cardsMajor=["Pick a card","The Fool","The Magician","The High Priestess","The Empress","The Emperor","The Hierophant",
+    "The Lovers","The Chariot","Strength","The Hermit","Wheel of Fortune","Justice","The Hanged Man","Death","Temperance",
+    "The Devil","The Tower","The Star","The Moon","The Sun","Judgement","The World"];
+    const cardData = JSON.parse(data);
+//#endregion
+
+//#region global variables   
+    let locrot;//are we translating 0 or rotating 1? 
+    let startX=0; let startY=0; //translation 
+    let curRot=0;//rotation
+    let editing=true;
+    let cardScale = 0.5;//what is the scale of the cards?
+    let dragging;//what element is being dragged?
+//#endregion
+
+
+//#region initialize
+function init(e){
+    //#region initialize deck
+    for (let i=0;i<78;i++)deck[i]=i;
+    //#endregion
+
+    //#region determine initial layout
+    let num = parseInt(document.forms["start"]["numCards"].value);
+    let numX = 0; //indexes per row
+    let numY = 0; //indexes of rows
+    let numR = 0; //indexes cards in last row
+
+    document.getElementById("start").remove();
+    editButton.style.visibility="visible";
+
+    if(num<=5){
+        numX=num;
+        numY=1;
+        numR=num;
+    }
+    else{
+        numX=Math.round(Math.sqrt(num*5/2));
+        numY=Math.ceil(num/numX);
+        numR=num%numX==0?numX:num%numX;
+    }
+    while((cardW*cardScale*numX)+(cardPad*(numX+1))>table.clientWidth)cardScale-=0.02;
+    while(cardH*cardScale*numY+cardPad*numY>table.clientHeight)cardScale-=0.02;
+
+    let marginX = (table.clientWidth-((numX*cardW*cardScale)+((numX-1)*cardPad)))/2;
+    let marginR = (table.clientWidth-((numR*cardW*cardScale)+((numR-1)*cardPad)))/2;
+    let marginY = (table.clientHeight-((numY*cardH*cardScale)+((numY-1)*cardPad)))/2;
+    //#endregion
+
+    //#region make cards and notes
+    for (let i=0;i<numY;i++){
+        for (let j=0;j<numX;j++){
+            let count=i*numX+j;
+            if(count==num)break;
+
+            //#region create card container
+            let card = cardTemplate.cloneNode(true);
+            card.id="card"+count;
+            card.style.width=cardW*cardScale+"px";
+            card.style.height=cardH*cardScale+"px";
+            card.style.display="initial";
+            //calc location
+            card.style.top=marginY+i*(cardH*cardScale+cardPad)+"px";
+            let offset=i<numY-1?marginX:marginR;
+            card.style.left=offset+j*(cardW*cardScale+cardPad)+"px";
+            //#endregion
+
+            //#region position front and back images
+            let front=card.querySelector(".cardFront");
+            let back=card.querySelector(".cardBack");
+
+            back.style.width=cardW+"px";
+            back.style.height=cardH+"px";
+            back.style.transform="translate(-"+(1-cardScale)/2*cardW+"px, -"+(1-cardScale)/2*cardH+"px)";
+            back.style.transform+="scale("+cardScale+")";
+
+            front.style.width=cardW+"px";
+            front.style.height=cardH+"px";
+            front.style.transform="translate(-"+(1-cardScale)/2*cardW+"px, -"+(1-cardScale)/2*cardH+"px)";
+            front.style.transform+="scale("+cardScale+")";
+            front.style.transform+="rotateY(180deg)";
+            //#endregion
+
+            //#region add label to card
+            let cardLbl = card.querySelector(".cardLabel");
+            cardLbl.innerHTML=count+1;
+            cardLbl.style.fontSize=cardH*cardScale/4+"px";
+            //#endregion
+
+            table.appendChild(card);
+
+            //#region create card note sections
+            let cardNote = cardNoteTemplate.cloneNode(true);
+            cardNote.id = "cardNote"+count;
+            cardNote.querySelector("legend").innerHTML += count+1;
+            cardNote.style.display="initial";
+            notes.appendChild(cardNote);
+            //#endregion
+        }
+    }
+    //#endregion
+}
+//#endregion
+
+//#region mouse event handling
+function hover(e){
+    let cen = getCenter(e.target);
+    let threshold=cen.side*0.45;
+    let dista = dist(e.clientX,e.clientY,cen.x,cen.y);
+    e.target.style.cursor = dista>threshold ? "url("+cursorRot+"),ne-resize":"grab";
+    locrot = dista>threshold ? 1:0;
+}
+function dragMouseDown(e) {
+    e.preventDefault();
+    dragging=e.target;//set which object is being dragged/rotated
+    dragging.classList.add("selected");
+    //if(dragging.id.includes("Img")||dragging.id.includes("Lbl")) dragging=dragging.parentElement;
+    // get the mouse cursor position at startup:
+    startX = e.clientX;
+    startY = e.clientY;
+    // call a function whenever the cursor moves:
+    //detect whether to move or rotate
+    document.onmousemove = locrot == 0 ? elementDrag : elementRotate;
+    document.onmouseup = closeDragElement;//when we drop
+}
+function elementDrag(e) {
+    e.preventDefault();
+    // calculate the new cursor position:
+    let curX = startX - e.clientX;
+    let curY = startY - e.clientY;
+    startX = e.clientX;
+    startY = e.clientY;
+    // set the element's new position:
+    dragging.style.top = (dragging.offsetTop - curY) + "px";
+    dragging.style.left = (dragging.offsetLeft - curX) + "px";
+    dragging.style.cursor = "grabbing";
+}
+function elementRotate(e){
+    e.preventDefault();
+    let angleDelta = getAngle(startX,startY) - getAngle(e.clientX,e.clientY);
+    startX = e.clientX;
+    startY = e.clientY;
+    curRot-=angleDelta;
+    dragging.style.transform = "rotate("+curRot+"deg)";
+}
+function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+    dragging.classList.remove("selected");
+}
+function toggleEdit(e){
+    //modify to be more efficient
+    //add editing variable to the button
+    //disable/enable editing cards
+    //change editing value true/false
+    //change button text
+    editButton.children[0].src=editing?"Assets/Icons/unlock.png":"Assets/Icons/lock.png";
+    editButton.previousElementSibling.style.display=editing?"block":"none";
+    editing=!editing;
+
+}
+//#endregion
+
+//#region card functions
+function suitChanged(e){
+    setCards(e.target.parentElement.querySelector("#cards"),e.target.value);
+}
+function setCards(cards,suit){
+    cards.style.display="initial";
+    cards.innerHTML="";
+    if(suit==""||suit==cardSuits[0]){
+        cards.style.display="none";
+        cardSelected(suit,cards,-1);
+    }
+    else if(suit=="Major"){
+        //modify this to for loop so I have an index
+        for(let i=0;i<cardsMajor.length;i++){
+            if(i>0&&!deck.includes(i-1))continue;
+            let cardOp = document.createElement("option");
+            cardOp.value=cardOp.innerHTML=cardsMajor[i];
+            cardOp.cardIndex=i-1;
+            cards.appendChild(cardOp);
+        }
+    }
+    else{
+        for(let i=0;i<cardsMinor.length;i++){
+            let index = 22+(i-1)+14*(cardSuits.indexOf(suit)-2);
+            if(i>0&&!deck.includes(index))continue;
+            let cardOp = document.createElement("option");
+            cardOp.value=cardOp.innerHTML=cardsMinor[i];
+            cardOp.cardIndex=i==0?-1:index;
+            cards.appendChild(cardOp);
+        }
+    }
+}
+function randomCard(e){
+    let suit=e.target.parentElement.querySelector("#suits");
+    let card = e.target.parentElement.querySelector("#cards");
+    card.style.display="initial";
+
+    let index =getRandom(0,deck.length-1);
+    let reverse = getRandom(0,1);
+    suit.value=cardData[deck[index]].Suit;
+    setCards(card,suit.value);
+    card.value=cardData[deck[index]].Card;
+    cardSelected(suit,card,deck[index],reverse);
+}
+function cardChanged(e){
+    let suit=e.target.parentElement.querySelector("#suits");
+    let card = e.target;
+    let index = card.querySelector("[value='"+card.value+"']").cardIndex;
+    cardSelected(suit,card,index,0);
+}
+async function cardSelected(suit,card,index,reverse){
+    let cardNote=card.parentElement.parentElement;
+    let cardId = parseInt(cardNote.id.replace("cardNote",""));
+    let newCard=cardNote.linkedCard==null?true:false;
+
+    cardNote.linkedCard = document.getElementById("card"+cardId);
+    if(cardNote.cardIndex!=null) deck.push(cardNote.cardIndex);//put the previous card back in the deck
+    
+    //handling for selecting "Pick a suit" or "Pick a card"
+    if(index==-1){
+        console.log("No card");
+        cardNote.cardIndex=null;
+        cardNote.linkedCard.children[0].style.transform="rotateY(0deg)";
+        cardNote.cardInfo=null;
+        cardNote.linkedCard=null;
+        cardNote.querySelector("legend").innerHTML="Card "+(cardId+1);
+        cardNote.querySelector(".box").style.display="none";
+        let shorthand=cardNote.querySelector("div.shorthand");
+        shorthand.innerHTML="";
+        shorthand.style.display="none";
+    }
+    else{
+        cardNote.cardIndex=index;
+        deck.splice(deck.indexOf(index),1);
+
+        //get info of selected card
+        cardNote.cardInfo=cardData[cardNote.cardIndex];
+        cardNote.querySelector("legend").innerHTML="Card "+(cardId+1)+": "+cardNote.cardInfo.Url;
+        cardNote.querySelector(".box").style.display="flex";
+        let cardBoxData = cardNote.querySelector(".collapsible.selected");
+        if(cardBoxData) cardNote.querySelector(".boxData").innerHTML = cardNote.cardInfo[cardBoxData.innerHTML];
+        let shorthand=cardNote.querySelector("div.shorthand");
+        shorthand.innerHTML=cardNote.cardInfo.Shorthand;
+        shorthand.style.display="block";
+
+        let cardImg=cardNote.linkedCard.querySelector(".cardFront img");
+        let suitNum=(cardSuits.indexOf(suit.value))-1;
+
+        //calculate offset
+        let cardNum = suitNum==0?cardsMajor.indexOf(card.value)-1:cardsMinor.indexOf(card.value)-1;
+        let x=cardNum%7;
+        let y=Math.floor(cardNum/7);
+
+        cardImg.style.filter="blur(50px)";
+        await new Promise(r => setTimeout(r, 190));
+        cardImg.src=suitImages[suitNum];
+        cardImg.style.objectPosition=(-5+(-x*cardW))+"px "+(-5+(-y*cardH))+"px";
+        if(newCard) cardNote.linkedCard.children[0].style.transform="rotateY(180deg)";
+        await new Promise(r => setTimeout(r, 20));
+        cardImg.style.filter="blur(0px)";
+
+    }
+}
+function toggleSelect(e){
+    let header=e.target.parentElement;
+    let cardNote=header.parentElement.parentElement;
+    let dataBlock=header.nextElementSibling;
+
+    let data=cardNote.cardInfo[e.target.innerHTML];
+
+    if(e.target==header.selected){
+        header.selected=null;
+        dataBlock.style.height="0px";
+    }
+    else if (header.selected){
+        header.selected.classList.remove("selected");
+        header.selected=e.target;
+        dataBlock.innerHTML=data;
+    }
+    else {
+        header.selected=e.target;
+        dataBlock.style.height="200px";
+        dataBlock.innerHTML=data;
+    }
+    e.target.classList.toggle("selected");
+  }
+//#endregion
+
+//#region utility functions
+let dist = (x1,y1,x2,y2) => Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
+function getCenter(obj){
+    let rect=obj.getBoundingClientRect();
+    let side = rect.width < rect.height ? rect.width : rect.height;
+    return {"x":rect.right-rect.width/2,"y":rect.bottom-rect.height/2,"side":side};
+}
+function getAngle(x,y){
+    let cen = getCenter(dragging);
+    return 15*Math.round((Math.atan2( cen.y- y, cen.x - x ) * ( 180 / Math.PI ))/15);
+}
+function getRandom(min, max) {
+    return Math.round(Math.random() * (max - min) ) + min;
+}
+
+//#endregion
