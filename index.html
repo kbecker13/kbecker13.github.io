@@ -2,35 +2,58 @@
 <html>
 <head>
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script" rel="stylesheet">
+
+    <title>Becker Portfolio</title>
 </head>
 
 <body>
     <div id="menu">|||</div>
     <div id="landing" class="page">
-        <h1>Howdy.</h1>
-    </div>
-    <div id="coding" class="page">
-        <div id="carousel-coding" class="carousel">
-            <input type="radio" name="coding-list" id="coding-item-0" url="Previews/Code/OneMoreShot.html" checked>
-            <input type="radio" name="coding-list" id="coding-item-1" url="Previews/Code/TarotJournalPre.html">
-            <input type="radio" name="coding-list" id="coding-item-2" url="Previews/Code/ReviewBot.html">
-
-            <div class="cards">
-                <label id="coding-card-0" for="coding-item-0">
-                    <div>One More Shot
-                        <div class="card-footer">-></div>
-                    </div> 
-                </label>
-                <label id="coding-card-1" for="coding-item-1"><div>Tarot Journal</div></label>
-                <label id="coding-card-2" for="coding-item-2"><div>Review Bot</div></label>
+        <div id="landing-text">
+            <h1>Welcome!</h1>
+            <div id="landing-subheading">
+                <span>My name is Kaitlyn Becker<br>
+                and I am <span id="landing-rotate">happy you're here</span></span>
             </div>
         </div>
     </div>
-    <div id="animation" class="page"></div>
-    <div id="illustration" class="page"></div>
-    <div id="branding" class="page"></div>
-    <div id="education" class="page"></div>
+    <div id="coding" class="page">
+        <div class="page-header"><h1>Coding and Development Works</h1></div>
+        <div id="carousel-coding" class="carousel"></div>
+    </div>
+    <div id="animation" class="page">
+        <div class="page-header"><h1>3D and Animation Works</h1></div>
+        <div id="carousel-animation" class="carousel"></div>
+    </div>
+    <div id="illustration" class="page">
+        <div class="page-header"><h1>Illustration Works</h1></div>
+        <div id="carousel-illustration" class="carousel"></div>
+    </div>
+    <div id="branding" class="page">
+        <div class="page-header"><h1>Branding Works</h1></div>
+        <div id="carousel-branding" class="carousel"></div>
+    </div>
+    <div id="education" class="page">
+        <div class="page-header"><h1>Education and Professional Development</h1></div>
+        <div id="carousel-education" class="carousel"></div>
+    </div>
 
+    
+    <label class="template" id="card-label-template">
+        <div class="card-frame"></div>
+        <div class="card-content">
+            <img>
+            <div><div></div><h2></h2></div>
+        </div>
+        <div class="card-bg">
+            <div class="card-footer">-></div>
+            <img>
+        </div> 
+    </label>
 </body>
 <footer>VVV</footer>
 </html>

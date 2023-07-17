@@ -214,9 +214,8 @@ h3{
   position: absolute;
   z-index: 5;
   display: block;
-  border-image: url(Assets/Frame.png) 55 stretch;
+  border-image: url(Assets/Frame.png) 55 / 25px stretch;
   border-style: solid;
-  border-width: 25px;
   box-sizing: border-box;
   top: 5px;
   bottom: 5px;/*setting absolute location ignores padding*/
