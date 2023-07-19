@@ -1,13 +1,13 @@
 :root{
     --coral: #F28585;
-    --blush:#f5d2d2;
+    --blush:#fcd7d7;
     --blush2: #fbc6c8;
     --off-white:#F2E8DF;
-    --soft-gold: #f6e5b5;
+    --soft-gold: #ffedba;
     --gold:#F2B263;
-    --soft-brown:#e8c5a3;
-    --sage:#86A69D;
-    --dark-green:#7bac7e;
+    --soft-brown:#e8cfa3;
+    --sage:#86a697;
+    --dark-green:#7f9e85;
     --outline:#DFBAA6;
     --text-stroke-color: var(--off-white);
     --card-footer-color: #DCCCC5ee;
@@ -30,7 +30,7 @@
     box-sizing: border-box;
     font-family: ABeeZee, sans-serif;
     font-size: 1.1rem;
-    color:var(--sage);
+    color:var(--dark-green);
     transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1.2);
     animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1.2);
 }
@@ -72,8 +72,22 @@ h1, h2{
     padding:1%;
 }
 #landing{
-    margin-top: 0;
-    background: url(Landing.jpg) center top / auto 100%;
+    margin: 0;
+    padding: 0%;
+    background: url(Landing.jpg) center top / auto 100% no-repeat;
+}
+#landing img{
+    position: absolute;
+    height: 100%;
+    opacity: 10%;
+    mix-blend-mode: screen;
+    animation: glow 10s infinite;
+}
+#landing img:nth-of-type(1){
+    animation-delay: 1s;
+}
+#landing img:nth-of-type(2){
+    animation-delay: 2s;
 }
 #landing-text{
     position: absolute;
@@ -88,14 +102,25 @@ h1, h2{
     margin-bottom: -6vw;
     font-family: 'Beauty';
 }
-#landing-subheading{
-}
-#landing-subheading span{
+#landing-subheading *{
     font-family: 'Arual';
     font-size: 2vw;
+    font-weight: bold;
+    line-height: 2.5vw;
 }
 #landing-rotate{
-    text-decoration: solid underline;
+    display: inline-block;
+    overflow: hidden;
+    height: 2.5vw;
+    padding: 0;
+    margin-bottom: -0.5vw;
+}
+.rotate{
+    list-style: none;
+    margin-top: 0vw;
+    padding: 0;
+    margin-bottom: 0;
+    animation: rotate 25s infinite, rotateOp 25s infinite;
 }
 .page{
     width: 100vw;
@@ -104,13 +129,14 @@ h1, h2{
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin:2vh 0;
+    margin:4vh 0;
 }
 .page-header{
     align-self: flex-start;
 }
 .page-header h1{
     font-size: 3.5vw;
+    font-weight: bold;
     color:var(--outline);
     mix-blend-mode: darken;
 }
@@ -120,6 +146,19 @@ h1, h2{
         0px var(--stroke) var(--text-stroke-color),
         0px var(--strokeN) var(--text-stroke-color),
         var(--strokeN) 0px var(--text-stroke-color);
+}
+.divider{
+    width: 100%;
+    height: 25px;
+    background:var(--soft-brown);
+    position: relative;
+    margin-bottom: 5vh;
+}
+.divider div{
+    width: 100%;
+    height: 30%;
+    background:#efd6ab;
+    position: absolute;
 }
 /*#region carousel*/
     input[type=radio]{
@@ -319,8 +358,51 @@ h1, h2{
         70%{transform:translateY(10px) scaleY(.8);}
         100%{transform:translateY(0px) scaleY(1);}
     }
-    @keyframes bounceOut{
-        100%{opacity:0%}
+    @keyframes glow{
+        0%{opacity: 10%;}
+        25%{opacity: 45%;}
+        50%{opacity: 10%;}
+        70%{opacity: 30%;}
+        90%{opacity: 10%;}
+        100%{opacity:10%}
+    }
+    @keyframes rotate {
+        0%{margin-top:2.5vw;}
+        5% { margin-top: 0vw; }
+        20% { margin-top: 0vw; }
+        25% { margin-top: -2.5vw; }
+        40% { margin-top: -2.5vw; }
+        45% { margin-top: -5vw; }
+        60% { margin-top: -5vw; }
+        65% { margin-top: -7.5vw; }
+        80% { margin-top: -7.5vw; }
+        85% { margin-top: -10vw; }
+        99.99% { margin-top: -10vw; }
+        100%{margin-top:2.5vw;}
+    }
+    @keyframes rotateOp {
+        0%{opacity: 100%;}
+        1% { opacity: 0%; }
+        3% { opacity: 0%; }
+        5% { opacity: 100%;}
+        20% { opacity: 100%; }
+        21% { opacity: 0%; }
+        23% { opacity: 0%; }
+        25% { opacity: 100%; }
+        40% { opacity: 100%; }
+        41% { opacity: 0%; }
+        43% { opacity: 0%; }
+        45% { opacity: 100%; }
+        60% { opacity: 100%; }
+        61% { opacity: 0%; }
+        63% { opacity: 0%; }
+        65% { opacity: 100%; }
+        80% { opacity: 100%; }
+        81% { opacity: 0%; }
+        83% { opacity: 0%; }
+        85% { opacity: 100%; }
+        99.99% { opacity: 100%; }
+        100%{opacity: 100%;}
     }
 
 /*#endregion*/
@@ -328,15 +410,3 @@ h1, h2{
 .template{
     display:none;
 }
-/*
-.flip5 { animation: flip5 12s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
-
-@keyframes flip2 {
-    0% { margin-top: -180px; }
-    5% { margin-top: -90px;  }
-    50% { margin-top: -90px; }
-    55% { margin-top: 0px; }
-    99.99% { margin-top: 0px; }
-    100% { margin-top: -180px; }
-}
-*/
