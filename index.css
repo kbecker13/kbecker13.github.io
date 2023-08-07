@@ -6,7 +6,8 @@
     --soft-gold: #ffedba;
     --gold:#F2B263;
     --soft-brown:#e8cfa3;
-    --sage:#86a697;
+    --yellow-green:#a0a478;
+    --sage:#abbfa9;
     --dark-green:#7f9e85;
     --outline:#DFBAA6;
     --text-stroke-color: var(--off-white);
@@ -36,7 +37,21 @@
 }
 body{
     margin:0;
+    background-image: linear-gradient(var(--soft-gold),var(--soft-gold) 30%,var(--blush));
     overflow-y: auto;
+    overflow-x: hidden;
+}
+#main{
+    height:100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+    position: relative;
+}
+#main-bg{
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
     background-image: linear-gradient(var(--soft-gold),var(--soft-gold) 30%,var(--blush));
 }
 #test{
@@ -63,18 +78,23 @@ h1, h2{
     font-weight: normal;
     margin: 1vh 0;
 }
-::-webkit-scrollbar{
+/* scrollbar styling*/
+::-webkit-scrollbar {
     display: none;
 }
+
 #menu{
-    position: absolute;
-    right:0;
-    padding:1%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 1%;
 }
 #landing{
     margin: 0;
     padding: 0%;
     background: url(Landing.jpg) center top / auto 100% no-repeat;
+    position: relative;
 }
 #landing img{
     position: absolute;
@@ -122,6 +142,28 @@ h1, h2{
     margin-bottom: 0;
     animation: rotate 25s infinite, rotateOp 25s infinite;
 }
+.rotate li{
+    padding:1vw 0;
+}
+#about img{
+    position: absolute;
+}
+#about :nth-child(1){
+    width: 40%;
+    max-height: 70%;
+    transform: translateX(50%);
+    object-fit: contain;
+}
+#about :nth-child(2){
+    width:40%;
+    max-height: 70%;
+    transform: translateX(-50%);
+    object-fit: contain;
+}
+#about :nth-child(3){
+    height: 80%;
+    bottom:2vw;
+}
 .page{
     width: 100vw;
     height: 100vh;
@@ -129,7 +171,13 @@ h1, h2{
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin:4vh 0;
+    margin-bottom:15vh;
+    position: sticky;
+    top:0;
+    background: var(--soft-gold);
+}
+.last-page{
+    margin: 0;
 }
 .page-header{
     align-self: flex-start;
@@ -161,6 +209,13 @@ h1, h2{
     position: absolute;
 }
 /*#region carousel*/
+    .carousel-wrapper{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     input[type=radio]{
         background-color: var(--off-white);
         border-radius: 50%;
@@ -187,8 +242,7 @@ h1, h2{
     .carousel{
         transform-style: preserve-3d;
         width: 100%;
-        height: 80%;
-        padding: 2% 5%;
+        height: 85%;
         display: flex;
         flex-direction: column;
     }
@@ -209,7 +263,6 @@ h1, h2{
         min-width: 420px;
     }
     .card-content{
-        z-index: 3;
         position: absolute;
         height: 93%;
         width: 100%;
@@ -228,13 +281,16 @@ h1, h2{
         transform-origin: bottom left;
     }
     .card-content img{
-        height: 100%;
+        height: 100%;    
+        width: 100%;
+        z-index: 3;
+        object-fit: contain;
     }
     .card-content h2{
         font-size: 3vw;
         position: relative;
-        color: var(--sage);
-        padding: 20px 45px 20px 20px;
+        color: var(--yellow-green);
+        padding: 10px 25px 10px 20px;
         text-shadow: 1px 1px var(--off-white), -1px -1px var(--soft-brown);
     }
     .card-content>div>div{
@@ -242,8 +298,8 @@ h1, h2{
         height: 100%;
         position: absolute;
         top:0;
-        border-image: url(sign.png) 63 71 31 177 fill stretch;
-        border-width: 63px 71px 31px 177px;
+        border-image: url(PlantSign.png) 130 400 fill stretch;
+        border-width: 32px 100px;
         border-style: solid;
     }
     .card-bg,.card-frame{
@@ -258,8 +314,8 @@ h1, h2{
     }
     .card-frame{
         z-index: 5;
-        border-image: url("PlantFrameMockup.png") 95 round;
-        border-image-outset: 1.5vh;
+        border-image: url("PlantFrame.png") 240 round;
+        border-image-outset: 1.4vh;
         border-style:solid;
     }
     .card-bg{
@@ -269,15 +325,16 @@ h1, h2{
         border: 3px solid var(--soft-brown);
         border-radius: 1.2vw;
     }
-    .card-bg *{
+    .card-bg>*{
         position: absolute;
     }
-    .card-bg img{
+    .card-bg>img{
         height: 100%;
         left:50%;
         transform: translatex(-50%);
         mix-blend-mode: multiply;
         opacity: 20%;
+        z-index: 2;
     }
     .card-footer{
         width:101%;
@@ -285,10 +342,19 @@ h1, h2{
         bottom:-14vh;
         transition: bottom .5s;    
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         padding:1% 3%;
         z-index: 4;
         background: var(--card-footer-color);
+    }
+    .card-detail{
+        font-size: .9rem;
+        flex-shrink: 0;
+    }
+    .card-footer img{
+        height: 30%;
+        top:10%;
+        position: relative;
     }
     /*#region carousel rotation*/
         .left {
@@ -314,7 +380,7 @@ h1, h2{
     /*#endregion*/
     /*#region currently selected*/
         .front .card-frame{
-            border-width: 13vh;
+            border-width: 18vh;
         }
         .front .card-bg{
             border-width: var(--card-border-width);
@@ -328,6 +394,7 @@ h1, h2{
             font-size: 3vw;
             left: 5px;
             transform: scaleX(1);
+            z-index: 5;
         }
         .front[animate="true"]:hover .card-footer{
             bottom:-7vh;
@@ -344,6 +411,35 @@ h1, h2{
         justify-content: center;
     }
 /*#endregion*/
+#preview-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    display: none;
+}
+#preview-frame-sizer{
+    margin: auto;
+    width: 90vw;
+    height: 90vh;
+    overflow: hidden;
+    position: relative;
+}
+#preview{
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#preview-bg{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background: var(--card-bg-shadow);
+    opacity: .6;
+}
 
 /*#region animations*/
     @keyframes bounceIn{
@@ -367,42 +463,36 @@ h1, h2{
         100%{opacity:10%}
     }
     @keyframes rotate {
-        0%{margin-top:2.5vw;}
-        5% { margin-top: 0vw; }
-        20% { margin-top: 0vw; }
-        25% { margin-top: -2.5vw; }
-        40% { margin-top: -2.5vw; }
-        45% { margin-top: -5vw; }
-        60% { margin-top: -5vw; }
-        65% { margin-top: -7.5vw; }
-        80% { margin-top: -7.5vw; }
-        85% { margin-top: -10vw; }
-        99.99% { margin-top: -10vw; }
-        100%{margin-top:2.5vw;}
+        0%      { margin-top: -1vw; }
+        15%     { margin-top: -1vw; }
+        20%     { margin-top: -5.5vw; }
+        35%     { margin-top: -5.5vw; }
+        40%     { margin-top: -10vw; }
+        55%     { margin-top: -10vw; }
+        60%     { margin-top: -14.5vw; }
+        75%     { margin-top: -14.5vw; }
+        80%     { margin-top: -19vw; }
+        95%     { margin-top: -19vw; }
+        99.99%  { margin-top: -23.5vw; }
+        100%    { margin-top:-1vw; }
     }
     @keyframes rotateOp {
-        0%{opacity: 100%;}
-        1% { opacity: 0%; }
-        3% { opacity: 0%; }
-        5% { opacity: 100%;}
+        0%  { opacity: 100%; }
+        15% { opacity: 100%; }
+        17% { opacity: 0%; }
         20% { opacity: 100%; }
-        21% { opacity: 0%; }
-        23% { opacity: 0%; }
-        25% { opacity: 100%; }
+        35% { opacity: 100%; }
+        37% { opacity: 0%; }
         40% { opacity: 100%; }
-        41% { opacity: 0%; }
-        43% { opacity: 0%; }
-        45% { opacity: 100%; }
+        55% { opacity: 100%; }
+        57% { opacity: 0%; }
         60% { opacity: 100%; }
-        61% { opacity: 0%; }
-        63% { opacity: 0%; }
-        65% { opacity: 100%; }
+        75% { opacity: 100%; }
+        77% { opacity: 0%; }
         80% { opacity: 100%; }
-        81% { opacity: 0%; }
-        83% { opacity: 0%; }
-        85% { opacity: 100%; }
-        99.99% { opacity: 100%; }
-        100%{opacity: 100%;}
+        95% { opacity: 100%; }
+        97% { opacity: 0%; }
+        100%{ opacity: 100%; }
     }
 
 /*#endregion*/

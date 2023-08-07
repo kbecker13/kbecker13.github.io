@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Moirai+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script" rel="stylesheet">
 
     <title>Becker Portfolio</title>
 </head>
@@ -25,6 +23,7 @@
                         <li>a technology enthusiast</li>
                         <li>an illustrator</li>
                         <li>an animator</li>
+                        <li>happy you're here</li>
                     </ul></div>
                 </span>
             </div>
@@ -32,27 +31,38 @@
         <img src="landing1.png"><img src="landing2.png"><img src="landing3.png">
     </div>
     <div class="divider"><div></div></div>
+    <div id="about" class="page">
+        <img src="About me right.png">
+        <img src="About me left.png">
+        <img src="About me.png">
+    </div>
     <div id="coding" class="page">
         <div class="page-header"><h1>Coding and Development Works</h1></div>
-        <div id="carousel-coding" class="carousel"></div>
+        <div class="carousel-wrapper"><div id="carousel-coding" class="carousel"></div></div>
     </div>
     <div id="animation" class="page">
         <div class="page-header"><h1>3D and Animation Works</h1></div>
-        <div id="carousel-animation" class="carousel"></div>
+        <div class="carousel-wrapper"><div id="carousel-animation" class="carousel"></div></div>
     </div>
     <div id="illustration" class="page">
         <div class="page-header"><h1>Illustration Works</h1></div>
-        <div id="carousel-illustration" class="carousel"></div>
+        <div class="carousel-wrapper"><div id="carousel-illustration" class="carousel"></div></div>
     </div>
     <div id="branding" class="page">
         <div class="page-header"><h1>Branding Works</h1></div>
-        <div id="carousel-branding" class="carousel"></div>
+        <div class="carousel-wrapper"><div id="carousel-branding" class="carousel"></div></div>
     </div>
-    <div id="education" class="page">
+    <div id="education" class="page last-page">
         <div class="page-header"><h1>Education and Professional Development</h1></div>
-        <div id="carousel-education" class="carousel"></div>
+        <div class="carousel-wrapper"><div id="carousel-education" class="carousel"></div></div>
     </div>
-
+    <div id ="preview-wrapper">
+        <div id ="preview-bg" onclick="test()"></div>
+        <div id ="preview-frame-sizer">
+            <iframe id ="preview" scrolling="no" src="Previews/Code/OneMoreShot.html" title="Preview"></iframe>
+        </div>
+    </div>
+    
     
     <label class="template" id="card-label-template">
         <div class="card-frame"></div>
@@ -61,7 +71,10 @@
             <div><div></div><h2></h2></div>
         </div>
         <div class="card-bg">
-            <div class="card-footer">-></div>
+            <div class="card-footer">
+                <span class="card-detail"></span>
+                <img src="share.png">
+            </div>
             <img>
         </div> 
     </label>
@@ -69,4 +82,5 @@
 <footer>VVV</footer>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="carouselData.js"></script>
 <script src="index.js"></script>

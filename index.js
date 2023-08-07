@@ -1,38 +1,17 @@
 /* 
 Things to fix
-  which radio is selected, need to have one for each carousel
+  add x button to iframe
+
+  add "Scroll down" to main
+  figure out how to get number in iframe, potentially switch radio?
 */
-
-let curCodeRadio=document.querySelector("#coding-item-0");
-
-const codingItems = [
-  {title:"One More Shot",preUrl:"Previews/Code/OneMoreShotPre.html",imgUrl:"Previews/Code/OneMoreShot.png",bgUrl:"Previews/Code/OneMoreShotBG.png"},
-  {title:"Tarot Journal",preUrl:"Previews/Code/TarotJournalPre.html",imgUrl:"Previews/Code/TarotJournal.png",bgUrl:"Previews/Code/TarotJournalBG.png"},
-  {title:"A Dress of Stars",preUrl:"Previews/Code/DressStarsPre.html",imgUrl:"Previews/Code/DressStars.png",bgUrl:"Previews/Code/DressStarsBG.png"}
-];
-const animationItems = [
-  {title:"Something Blue",preUrl:"Previews/Code/OneMoreShotPre.html",imgUrl:"Previews/Code/OneMoreShot.png",bgUrl:"Previews/Code/OneMoreShotBG.png"},
-  {title:"Tarot Journal",preUrl:"Previews/Code/TarotJournalPre.html",imgUrl:"Previews/Code/TarotJournal.png",bgUrl:"Previews/Code/TarotJournalBG.png"},
-  {title:"A Dress of Stars",preUrl:"Previews/Code/DressStarsPre.html",imgUrl:"Previews/Code/DressStars.png",bgUrl:"Previews/Code/DressStarsBG.png"}
-];
-const illustrationItems = [
-  {title:"Hemlock Glade",preUrl:"Previews/Code/OneMoreShotPre.html",imgUrl:"Previews/Code/OneMoreShot.png",bgUrl:"Previews/Code/OneMoreShotBG.png"},
-  {title:"Tarot Journal",preUrl:"Previews/Code/TarotJournalPre.html",imgUrl:"Previews/Code/TarotJournal.png",bgUrl:"Previews/Code/TarotJournalBG.png"},
-  {title:"A Dress of Stars",preUrl:"Previews/Code/DressStarsPre.html",imgUrl:"Previews/Code/DressStars.png",bgUrl:"Previews/Code/DressStarsBG.png"}
-];
-const brandingItems = [
-  {title:"One More Shot",preUrl:"Previews/Code/OneMoreShotPre.html",imgUrl:"Previews/Code/OneMoreShot.png",bgUrl:"Previews/Code/OneMoreShotBG.png"},
-  {title:"Tarot Journal",preUrl:"Previews/Code/TarotJournalPre.html",imgUrl:"Previews/Code/TarotJournal.png",bgUrl:"Previews/Code/TarotJournalBG.png"},
-  {title:"A Dress of Stars",preUrl:"Previews/Code/DressStarsPre.html",imgUrl:"Previews/Code/DressStars.png",bgUrl:"Previews/Code/DressStarsBG.png"}
-];
-const educationItems = [
-  {title:"One More Shot",preUrl:"Previews/Code/OneMoreShotPre.html",imgUrl:"Previews/Code/OneMoreShot.png",bgUrl:"Previews/Code/OneMoreShotBG.png"},
-  {title:"Tarot Journal",preUrl:"Previews/Code/TarotJournalPre.html",imgUrl:"Previews/Code/TarotJournal.png",bgUrl:"Previews/Code/TarotJournalBG.png"},
-  {title:"A Dress of Stars",preUrl:"Previews/Code/DressStarsPre.html",imgUrl:"Previews/Code/DressStars.png",bgUrl:"Previews/Code/DressStarsBG.png"}
-];
-const carouselArrays = [codingItems,animationItems,illustrationItems,brandingItems,educationItems];
-
+//#region global constants
+  const frameWrap = document.getElementById("preview-wrapper");
+  const frame = document.getElementById("preview");
+//#endregion
+//set up the main page
 function init(){
+  //populate each portfolio carousel
   let carousels = document.querySelectorAll(".carousel");
   for(let i=0;i<carousels.length;i++){
     let carousel = carousels[i];
@@ -51,7 +30,11 @@ function init(){
       item.id = name+"-item-"+j;
       item.name = name+"-list";
       item.setAttribute("url",carouselArrays[i][j].preUrl);
-      if(j==0) item.checked = true;
+      //set the first item as "currently selected"
+      if(j==0) {
+        item.checked = true;
+        radio.curClicked=item;
+      }
       radio.appendChild(item);
 
       //set up cards
@@ -61,29 +44,35 @@ function init(){
       card.setAttribute("for",item.id);
       card.querySelector(".card-content img").src = carouselArrays[i][j].imgUrl;
       card.querySelector(".card-content h2").innerHTML = carouselArrays[i][j].title;
-      card.querySelector(".card-bg img").src = carouselArrays[i][j].bgUrl;
+      card.querySelector(".card-bg>img").src = carouselArrays[i][j].bgUrl;
+      card.querySelector(".card-detail").innerHTML = carouselArrays[i][j].detail;
       cards.appendChild(card);
     }
   }  
+    //bind click event to each radio button
     let decks = document.querySelectorAll(".carousel-cards");
     for(let j=0;j<decks.length;j++)
       cycle(decks[j].children,0);
     $('input[type="radio"]').bind('click', clickRadio);
   }
-  //jquery to bind onclick to each radio
+  //handle clicks on radio buttons
   function clickRadio(e){
     //check if clicked is current selection, then open more info
-    if(e.target==curCodeRadio){
+    if(e.target==e.target.parentElement.curClicked){
       //play some kind of transition animation
-      window.open(e.target.getAttribute("url"),"_self");
+      //window.open(e.target.getAttribute("url"),"_self");
+      frame.src = e.target.getAttribute("url");
+      frameWrap.style.display = "flex";
+      document.body.style.overflowY = "hidden";
     }
     else{
       let cards = e.target.parentElement.parentElement.querySelector(".carousel-cards").children;
       let selected = parseInt(e.target.id.slice(-1));
       cycle(cards,selected);
     }
-    curCodeRadio=e.target;
+    e.target.parentElement.curClicked=e.target;
   }
+  //set location of each carousel card
   async function cycle (cards,selected){
     cards[selected].className="front";
     cards[selected].setAttribute("animate","false");
@@ -97,4 +86,11 @@ function init(){
     cards[selected].setAttribute("animate","true");
   }
   const mod = (n,m) => ((n%m)+m)%m;
+  
+  //put this inside document ready
   init();
+
+  function test(){
+    frameWrap.style.display="none";
+    document.body.style.overflowY="auto";
+  }

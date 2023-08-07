@@ -64,8 +64,9 @@ function init(e){
     //#endregion
 
     let num = parseInt(document.forms["start"]["numCards"].value);
-    document.getElementById("start").parentElement.remove();
+    document.getElementById("start").remove();
     document.getElementById("header").style.display="flex";
+    document.getElementsByTagName("footer")[0].style.display="flex";
 
     let notes=document.getElementById("notes");
 
@@ -323,17 +324,20 @@ function printViewToggle(e){
 
 //#region card data functions
 function suitChanged(e){
-    setCards(e.target.parentElement.querySelector(".cards"),e.target.value);
+    setCards(e.target.parentElement.querySelector(".cards"),e.target,cardsMajor[0]);
 }
-function setCards(cards,suit){
+function setCards(cards,suit,value){
     cards.style.display="initial";
     cards.innerHTML="";
-    if(suit==""||suit==cardSuits[0]){
+    if(suit=="unknown"){
+        suit=cards.parentElement.querySelector(".suits");
+        if(suit.value==""||suit.value==cardSuits[0]) return;
+    }
+    if(suit.value==""||suit.value==cardSuits[0]){
         cards.style.display="none";
         cardSelected(suit,cards,-1);
     }
-    else if(suit=="Major"){
-        //modify this to for loop so I have an index
+    else if(suit.value=="Major"){
         for(let i=0;i<cardsMajor.length;i++){
             if(i>0&&!deck.includes(i-1))continue;
             let cardOp = document.createElement("option");
@@ -344,7 +348,7 @@ function setCards(cards,suit){
     }
     else{
         for(let i=0;i<cardsMinor.length;i++){
-            let index = 22+(i-1)+14*(cardSuits.indexOf(suit)-2);
+            let index = 22+(i-1)+14*(cardSuits.indexOf(suit.value)-2);
             if(i>0&&!deck.includes(index))continue;
             let cardOp = document.createElement("option");
             cardOp.value=cardOp.innerHTML=cardsMinor[i];
@@ -352,6 +356,7 @@ function setCards(cards,suit){
             cards.appendChild(cardOp);
         }
     }
+    cards.value=value;
 }
 function randomCard(e){
     let suit=e.target.parentElement.querySelector(".suits");
@@ -361,7 +366,7 @@ function randomCard(e){
     let index =getRandom(0,deck.length-1);
     let reverse = getRandom(0,100);
     suit.value=cardData[deck[index]].Suit;
-    setCards(card,suit.value);
+    setCards(card,suit,"");
     card.value=cardData[deck[index]].Card;
     cardSelected(suit,card,deck[index],reverse);
 }
@@ -386,7 +391,6 @@ async function cardSelected(suit,card,index,reverse){
         cardNote.linkedCard.children[0].style.transform="rotateY(0deg)";
         cardNote.cardInfo=null;
         cardNote.linkedCard=null;
-        //cardNote.querySelector(".box").style.display="none";
         reversal.style.display="none";
         cardNote.style.display="none";
     }
@@ -408,7 +412,6 @@ async function cardSelected(suit,card,index,reverse){
         cardNote.querySelector(".cardInfoLink").href="https://www.alittlesparkofjoy.com/"+cardNote.cardInfo["Url Helper"]+"-tarot-card-meanings/";
 
         let shorthand=cardNote.querySelector(".shorthand");
-        //console.log(cardNote.cardInfo.Shorthand);
         let re=/Upright:\s*?(.*)\s*?<br>\s*?Reversed:\s*?(.*)/i;
         let short=cardNote.cardInfo.Shorthand.match(re);
         if(short.length==3){
@@ -438,6 +441,13 @@ async function cardSelected(suit,card,index,reverse){
         await new Promise(r => setTimeout(r, 20));
         cardImg.style.filter="blur(0px)";
         cardNote.style.display="initial";
+    }
+    //update all cardselects with updated deck
+    let cardSelects = document.querySelectorAll(".cards");
+    for (let i=0;i<cardSelects.length;i++)
+    {
+        if(cardSelects[i]!=card)
+            setCards(cardSelects[i],"unknown",cardSelects[i].value);
     }
 }
 function reverseCard(e){

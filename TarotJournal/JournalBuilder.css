@@ -1,22 +1,19 @@
-/*#region fonts*/
-@font-face {
-  font-family: Mirra;
-  src: url("Assets/Fonts/Mirra-Regular.ttf");
-}
-@font-face {
-  font-family: CaviarDreams;
-  src: url("Assets/Fonts/CaviarDreams.ttf");
-}
-/*#endregion*/
 /*#region elements*/
+:root{
+  --gold:rgb(201 159 108);
+  --soft-gold: rgb(204, 159, 104);
+  --background: #363c47;
+  --glow: #555674;
+}
 body{
   margin:1vw;
-  background-color: #363c47;
+  background-color: var(--background);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   color:floralwhite;
-  font-family: CaviarDreams;
+  font-family: "Poiret One";
+  font-size: 1.3rem;
 }
 body>div{
   box-sizing: border-box;
@@ -26,7 +23,7 @@ header{
 }
 footer{
   position: fixed;
-  display: flex;
+  display: none;
   flex-direction: row-reverse;
   bottom:0;
   left:0;
@@ -43,7 +40,7 @@ footer:hover{
   opacity: 70%;
 }
 input[type="button"],button{
-  background: rgb(201 159 108);
+  background: var(--gold);
   outline:none;
   border:none;
   padding: 2px;
@@ -67,26 +64,52 @@ a{
 /*#region text styling*/
 h1{
   font-size: 1.5rem;
-  font-family: Mirra;
-  color: rgb(20, 19, 19);
+  color: #cdb15e;
   margin: 0px 0px 5px;
   padding:2px;
 }
 h2{
   font-size: 1.2rem;
-  font-family:Mirra;
-  color: rgb(204, 159, 104);
+  color: var(--soft-gold);
   margin: 0px 0px 5px;
+  font-weight: normal;
+}
+h1,h2{
+  font-family: "Cinzel Decorative",sans-serif;
 }
 h3{
   font-size: 1rem;
-  font-family: CaviarDreams;
+  font-family: "Poiret One",sans-serif;
+  font-weight: normal;
   color: rgb(199, 199, 199);
   margin: 0px 0px 5px;
 }
 /*#endregion*/
 #start{
   z-index: 10;
+  margin-top: 6vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  max-width: 45vh;
+  max-height: 80%;
+  box-shadow: var(--glow) 0px 0px 5px;
+  padding: 2%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#start h1{
+  font-size: 4vh;
+  margin-top: -5vh;
+  position: absolute;
+  color: floralwhite;
+  text-shadow: var(--gold) 0px 0px 5px, var(--gold) 0px 0px 10px, var(--gold) 0px 0px 15px;
+  font-weight: normal;
+}
+#start img{
+  width:100%;
 }
 #header{
   position: relative;
@@ -396,7 +419,7 @@ td{
   border-radius: 3px;
 }
 .collapsible{
-  background-color: rgb(201 159 108);
+  background-color: var(--gold);
   color: white;
   cursor: pointer;
   padding: 3px;

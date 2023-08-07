@@ -2,15 +2,19 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="JournalBuilder.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Poiret+One" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative" rel="stylesheet">
 	</head>
 	<body>
-		<div>
-			<form id="start" name="start" onsubmit="return false;" style="position:absolute">
-					<label for="numCards">Number of cards:</label>
+		<div id="start">
+			<h1>Tarot Journal Builder</h1>
+			<form name="start" onsubmit="return false;">
+					<span>How many cards are in your spread?</span><br>
 					<input type="number" id="numCards" name="numCards" min="1" max="50" value="3">
 					<input type="button" value="Go" onclick="init(event)">
 			</form>
-			<img src="Assets/drawCard.gif" height="400px"/>
+			<img src="Assets/drawCard.gif"/>
 		</div>
 		<div id="header">
 			<div id="table">
