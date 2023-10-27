@@ -1,7 +1,6 @@
 const codingItems = [
     {
         title:  "One More Shot",
-        preUrl: "Previews/Code/OneMoreShot.html",
         imgUrl: "Previews/Code/OneMoreShot.png",
         bgUrl:  "Previews/Code/OneMoreShotBG.png",
         detail: "Educational visual novel game developed in Unity.<br>"+

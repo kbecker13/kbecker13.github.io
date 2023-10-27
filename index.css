@@ -19,14 +19,6 @@
     --stroke:4px;
     --strokeN:-4px;
 }
-@font-face {
-    font-family: Arual;
-    src: url("Arual.ttf");
-}
-@font-face{
-    font-family: 'Beauty';
-    src: url("Beauty\ in\ the\ Starlight.ttf")
-}
 *{
     box-sizing: border-box;
     font-family: ABeeZee, sans-serif;
@@ -53,15 +45,6 @@ body{
     width: 100%;
     z-index: -1;
     background-image: linear-gradient(var(--soft-gold),var(--soft-gold) 30%,var(--blush));
-}
-#test{
-    height: 100px;
-    width: 300px;
-    resize: both;
-    overflow: hidden;
-    border-image: url(sign.png) 63 71 31 177 fill stretch;
-    border-width: 63px 71px 31px 177px;
-    border-style: solid;
 }
 footer{
     justify-content: center;
@@ -93,7 +76,7 @@ h1, h2{
 #landing{
     margin: 0;
     padding: 0%;
-    background: url(Landing.jpg) center top / auto 100% no-repeat;
+    background: url('Assets/Graphics/Landing.jpg') center top / auto 100% no-repeat;
     position: relative;
 }
 #landing img{
@@ -120,7 +103,7 @@ h1, h2{
     font-size: 14vw;
     margin-left: -14vw;
     margin-bottom: -6vw;
-    font-family: 'Beauty';
+    font-family: 'Beauty in the Starlight';
 }
 #landing-subheading *{
     font-family: 'Arual';
@@ -140,7 +123,7 @@ h1, h2{
     margin-top: 0vw;
     padding: 0;
     margin-bottom: 0;
-    animation: rotate 25s infinite, rotateOp 25s infinite;
+    animation: rotate 22s infinite, rotateOp 22s infinite;
 }
 .rotate li{
     padding:1vw 0;
@@ -298,7 +281,7 @@ h1, h2{
         height: 100%;
         position: absolute;
         top:0;
-        border-image: url(PlantSign.png) 130 400 fill stretch;
+        border-image: url("Assets/UI Graphics/PlantSign.png") 130 400 fill stretch;
         border-width: 32px 100px;
         border-style: solid;
     }
@@ -314,7 +297,7 @@ h1, h2{
     }
     .card-frame{
         z-index: 5;
-        border-image: url("PlantFrame.png") 240 round;
+        border-image: url('Assets/UI Graphics/PlantFrame.png') 240 round;
         border-image-outset: 1.4vh;
         border-style:solid;
     }

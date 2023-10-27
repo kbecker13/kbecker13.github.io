@@ -20,10 +20,6 @@
     font-family: 'ABeeZee',sans-serif;
     color:var(--dark-green);
 }
-@font-face {
-    font-family: Arual;
-    src: url("Arual.ttf");
-}
 h1{
     font-family:'Arual',sans-serif;
     font-weight: bold;
@@ -52,6 +48,9 @@ h2{
     overflow-y: auto;
     position: absolute;
     left: 0;
+    background-color: #fffaf03d;
+    border-radius: 10px;
+    z-index: 3;
 }
 #image div{
     width: 100%;
@@ -88,6 +87,7 @@ h2{
 }
 #description{
     padding-left: 6%;
+    white-space: pre-wrap;
 }
 #tags{
     text-align: center;

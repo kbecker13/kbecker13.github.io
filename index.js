@@ -10,7 +10,7 @@ Things to fix
   const frame = document.getElementById("preview");
 //#endregion
 //set up the main page
-function init(){
+$( document ).ready(function() {
   //populate each portfolio carousel
   let carousels = document.querySelectorAll(".carousel");
   for(let i=0;i<carousels.length;i++){
@@ -29,7 +29,7 @@ function init(){
       item.type = "radio";
       item.id = name+"-item-"+j;
       item.name = name+"-list";
-      item.setAttribute("url",carouselArrays[i][j].preUrl);
+      item.setAttribute("loc",i+'$'+j);
       //set the first item as "currently selected"
       if(j==0) {
         item.checked = true;
@@ -48,20 +48,19 @@ function init(){
       card.querySelector(".card-detail").innerHTML = carouselArrays[i][j].detail;
       cards.appendChild(card);
     }
-  }  
+  } 
     //bind click event to each radio button
     let decks = document.querySelectorAll(".carousel-cards");
     for(let j=0;j<decks.length;j++)
       cycle(decks[j].children,0);
     $('input[type="radio"]').bind('click', clickRadio);
-  }
+
+  } );
   //handle clicks on radio buttons
   function clickRadio(e){
     //check if clicked is current selection, then open more info
     if(e.target==e.target.parentElement.curClicked){
-      //play some kind of transition animation
-      //window.open(e.target.getAttribute("url"),"_self");
-      frame.src = e.target.getAttribute("url");
+      frame.src += '?'+e.target.getAttribute("loc");
       frameWrap.style.display = "flex";
       document.body.style.overflowY = "hidden";
     }
@@ -88,9 +87,8 @@ function init(){
   const mod = (n,m) => ((n%m)+m)%m;
   
   //put this inside document ready
-  init();
 
-  function test(){
+  function closePreview(){
     frameWrap.style.display="none";
     document.body.style.overflowY="auto";
   }
