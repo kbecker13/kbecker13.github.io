@@ -1,20 +1,35 @@
-$( document ).ready(function() {
-    console.log( "ready!" );
+/*
+*/
 
-    if (location.href.includes("previews")){
-        var params = location.href.split('?')[1];
-        if(params){
-            params=params.split("$");
-            preData = previewArrays[params[0]][params[1]];
-            console.log(preData);
-            $("#title").html(preData.title);
-            $("#counter").html( 
-                `${(params[1]+1).toString().padStart(2,0)}/${(previewArrays[params[0]].length+1).toString().padStart(2,0)}` 
-                );
-            $("#tags").html(preData.tags);
-            $("#timelineInfo").html(preData.timelineInfo);
-            $("#description").text(preData.description);
-            $("#image img").attr('src',preData.imageSrc);
-        }
-    }
+$( document ).ready(function() {
+    if (location.href.includes("previews.html?")) updatePreview();
+
+    //button handling
+    $("#prevPre").click(function(){
+        var loc = location.href.split('?')[1].split('$');
+        location.href = `${location.href.split("?")[0]}?${loc[0]}$${mod(parseInt(loc[1])-1,carouselArrays[loc[0]].length)}`;
+    });
+    $("#nextPre").click(function(){
+        var loc = location.href.split('?')[1].split('$');
+        location.href = `${location.href.split("?")[0]}?${loc[0]}$${mod(parseInt(loc[1])+1,carouselArrays[loc[0]].length)}`;
+    });
 });
+//populate preview page template
+function updatePreview(){
+    var loc = location.href.split('?')[1].split('$');
+    preData = carouselArrays[loc[0]][loc[1]];
+    $("#title").html(preData.title);
+    $("#counter").html( 
+        `${(parseInt(loc[1])+1).toString().padStart(2,0)}/${(carouselArrays[loc[0]].length).toString().padStart(2,0)}` 
+        );
+    $("#tags").html(preData.tags);
+    //***test if there is timeline info, if not, hide
+    $("#timelineInfo").html(preData.timelineInfo);
+    $("#description").text(preData.description);
+    $("#image img").attr('src',preData.preImageUrl);
+}
+
+
+
+//utility functions
+const mod = (n,m) => ((n%m)+m)%m;

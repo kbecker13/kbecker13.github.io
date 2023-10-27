@@ -3,119 +3,173 @@ const codingItems = [
         title:  "One More Shot",
         imgUrl: "Previews/Code/OneMoreShot.png",
         bgUrl:  "Previews/Code/OneMoreShotBG.png",
-        detail: "Educational visual novel game developed in Unity.<br>"+
-                "Languages: C#, JSON, JS"
+        detail: `Educational visual novel game developed in Unity.
+        Languages: C#, JSON, JS`,
+        tags:"#Unity #Git #CSharp #Twine #Photoshop #JavaScript #JSON",
+        timelineInfo:"Initially developed 2013-2016, routinely updated",
+        description:`One More Shot is a visual novel game that seeks to 
+        inform young adults about alcohol and the effects it can have on your life if abused
+        non-judgemental, informative information to assess their own drinking/relationship with alcohol
+        developed in Unity
+        led a small team of programmers and artists
+        coordinated different teams
+        wrote a parser to convert from Twine (describe) to LDC
+        intermittent updates`,
+        preImageUrl:"Code/OneMoreShot.png"
     },
     {
         title:  "Tarot Journal",
-        preUrl: "Previews/Code/TarotJournalPre.html",
         imgUrl: "Previews/Code/TarotJournal.png",
         bgUrl:  "Previews/Code/TarotJournalBG.png",
-        detail: "Interactive Tarot reference and journal page builder<br>"+
-                "Languages: HTML, CSS, JS, JSON"
+        detail: `Interactive Tarot reference and journal page builder
+        Languages: HTML, CSS, JS, JSON`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Discord Review Bot",
-        preUrl: "Previews/Code/ReviewBot.html",
         imgUrl: "Previews/Code/ReviewBot.png",
         bgUrl:  "Previews/Code/ReviewBotBG.png",
-        detail: "Cross-platform Reddit/Discord Automated Review System<br>"+
-                "Languages: Python, Reddit API, Google Scripts"
+        detail: `Cross-platform Reddit/Discord Automated Review System
+        Languages: Python, Reddit API, Google Scripts`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "A Dress of Stars",
-        preUrl: "Previews/Code/DressStarsPre.html",
         imgUrl: "Previews/Code/DressStars.png",
         bgUrl:  "Previews/Code/DressStarsBG.png",
-        detail: "Interactive children's fairy tale E-Book<br>"+
-                "Languages: HTML, CSS, JS"
+        detail: `Interactive children's fairy tale E-Book
+        Languages: HTML, CSS, JS`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     }
 ];
 const animationItems = [
     {
         title:  "Something Blue",
-        preUrl: "Previews/Animation/SomethingBlue.html",
         imgUrl: "Previews/Animation/SomethingBlue.png",
         bgUrl:  "Previews/Animation/SomethingBlueBG.png",
-        detail: "Animated 3D short about a classic poem<br>"+
-                "Softwares: Maya, Blender, Photoshop"
+        detail: `Animated 3D short inspired by a traditional poem
+        Softwares: Maya, Blender, Photoshop`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "2D Animations",
-        preUrl: "Previews/Animation/2DAnimation.html",
         imgUrl: "Previews/Animation/2DAnimation.png",
         bgUrl:  "Previews/Animation/2DAnimationBG.png",
-        detail: "Collection of 2D animations in a variety of techniques<br>"+
-                "Softwares: Adobe Animate, Photoshop, Illustrator, Procreate"
+        detail: `Collection of 2D animations in a variety of techniques
+        Softwares: Adobe Animate, Photoshop, Illustrator, Procreate`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
-        title:  "3D Animations",
-        preUrl: "Previews/Animation/3DAnimation.html",
+        title:  "3D Works",
         imgUrl: "Previews/Animation/3DAnimation.png",
         bgUrl:  "Previews/Animation/3DAnimationBG.png",
-        detail: "Collection of 3D modeling, texturing, animating and rendering<br>"+
-                "Softwares: Blender, Photoshop"
+        detail: `Collection of 3D modeling, texturing, animating and rendering
+        Softwares: Blender, Photoshop`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Facial Rigging",
-        preUrl: "Previews/Animation/Rigging.html",
         imgUrl: "Previews/Animation/Rigging.png",
         bgUrl:  "Previews/Animation/RiggingBG.png",
-        detail: "Advanced facial rigs for efficient lip-syncing"+
-                "<br>Softwares: Blender"
+        detail: `Advanced facial rigs for efficient lip-syncing
+        Softwares: Blender`,
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     }
 ];
 const illustrationItems = [
     {
         title:  "Hemlock Glade",
-        preUrl: "Previews/Illustration/HemlockGlade.html",
         imgUrl: "Previews/Illustration/HemlockGlade.png",
         bgUrl:  "Previews/Illustration/HemlockGladeBG.png",
-        detail: "Successfully crowd-funded coloring book of my illustrations"
+        detail: "Successfully crowd-funded coloring book of my illustrations",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Character Design",
-        preUrl: "Previews/Illustration/CharacterDesign.html",
         imgUrl: "Previews/Illustration/CharacterDesign.png",
         bgUrl:  "Previews/Illustration/CharacterDesignBG.png",
-        detail: "Collection of character artwork"
+        detail: "Collection of character artwork",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Environment Design",
-        preUrl: "Previews/Illustration/BGDesign.html",
         imgUrl: "Previews/Illustration/BGDesign.png",
         bgUrl:  "Previews/Illustration/BGDesignBG.png",
-        detail: "Collection of environment illustrations"
+        detail: "Collection of environment illustrations",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Stylized Design",
-        preUrl: "Previews/Illustration/Stylized.html",
         imgUrl: "Previews/Illustration/Stylized.png",
         bgUrl:  "Previews/Illustration/StylizedBG.png",
-        detail: "Collection of highly stylized character artwork"
+        detail: "Collection of highly stylized character artwork",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     }
 ];
 const brandingItems = [
     {
         title:  "Thrifty Wifty DIY",
-        preUrl: "Previews/Branding/ThriftyWifty.html",
         imgUrl: "Previews/Branding/ThriftyWifty.png",
         bgUrl:  "Previews/Branding/ThriftyWiftyBG.png",
-        detail: "My personal brand and storefront"
+        detail: "My personal brand and storefront",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Fence Shield",
-        preUrl: "Previews/Branding/FenceShield.html",
         imgUrl: "Previews/Branding/FenceShield.png",
         bgUrl:  "Previews/Branding/FenceShieldBG.png",
-        detail: "A US veteran owned and operated fence-staining business"
+        detail: "A US veteran owned and operated fence-staining business",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Patience Farms",
         preUrl: "Previews/Branding/PatienceFarms.html",
         imgUrl: "Previews/Branding/PatienceFarms.png",
         bgUrl:  "Previews/Branding/PatienceFarmsBG.png",
-        detail: "A family-run farm in rural Kentucky"
+        detail: "A family-run farm in rural Kentucky",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     }
 ];
 const educationItems = [
@@ -124,28 +178,44 @@ const educationItems = [
         preUrl: "Previews/Education/TechIntegration.html",
         imgUrl: "Previews/Education/TechIntegration.png",
         bgUrl:  "Previews/Education/TechIntegrationBG.png",
-        detail: "Training teachers in functional and approachable tech integration"
+        detail: "Training teachers in functional and approachable tech integration",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Professional Development",
         preUrl: "Previews/Education/ProDev.html",
         imgUrl: "Previews/Education/ProDev.png",
         bgUrl:  "Previews/Education/ProDevBG.png",
-        detail: "Collection of trainings on a variety of topics"
+        detail: "Collection of trainings on a variety of topics",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Curriculum Design",
         preUrl: "Previews/Education/Curriculum.html",
         imgUrl: "Previews/Education/Curriculum.png",
         bgUrl:  "Previews/Education/CurriculumBG.png",
-        detail: "Collection of lesson plans from 6 years of curriculum creation"
+        detail: "Collection of lesson plans from 6 years of curriculum creation",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     },
     {
         title:  "Tool Creation",
         preUrl: "Previews/Education/Tools.html",
         imgUrl: "Previews/Education/Tools.png",
         bgUrl:  "Previews/Education/ToolsBG.png",
-        detail: "Tools made to assist fellow teachers"
+        detail: "Tools made to assist fellow teachers",
+        tags:"",
+        timelineInfo:"",
+        description:``,
+        preImageUrl:""
     }
 ];
 

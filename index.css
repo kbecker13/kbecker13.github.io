@@ -154,7 +154,7 @@ h1, h2{
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-bottom:15vh;
+    margin-top:15vh;
     position: sticky;
     top:0;
     background: var(--soft-gold);
@@ -321,18 +321,17 @@ h1, h2{
     }
     .card-footer{
         width:101%;
-        height: 14vh;
-        bottom:-14vh;
+        height: 16vh;
+        bottom:-16vh;
         transition: bottom .5s;    
         display: flex;
         justify-content: space-between;
-        padding:1% 3%;
+        padding:3vh;
         z-index: 4;
         background: var(--card-footer-color);
     }
     .card-detail{
         font-size: .9rem;
-        flex-shrink: 0;
     }
     .card-footer img{
         height: 30%;
@@ -380,11 +379,11 @@ h1, h2{
             z-index: 5;
         }
         .front[animate="true"]:hover .card-footer{
-            bottom:-7vh;
+            bottom:-6vh;
             animation: bounceIn2 .5s both;
         }
         .front[animate="true"]:hover .card-content>div{
-            bottom:6vh;
+            bottom:6.6vh;
             animation:bounceIn2 .5s both;
         }
     /*#endregion*/
@@ -394,6 +393,9 @@ h1, h2{
         justify-content: center;
     }
 /*#endregion*/
+#about{
+    margin-top: 0;
+}
 #preview-wrapper{
     position: fixed;
     width: 100%;

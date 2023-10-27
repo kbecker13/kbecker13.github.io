@@ -1,14 +1,9 @@
 /* 
 Things to fix
   add x button to iframe
-
-  add "Scroll down" to main
-  figure out how to get number in iframe, potentially switch radio?
 */
-//#region global constants
-  const frameWrap = document.getElementById("preview-wrapper");
-  const frame = document.getElementById("preview");
 //#endregion
+
 //set up the main page
 $( document ).ready(function() {
   //populate each portfolio carousel
@@ -55,40 +50,56 @@ $( document ).ready(function() {
       cycle(decks[j].children,0);
     $('input[type="radio"]').bind('click', clickRadio);
 
-  } );
-  //handle clicks on radio buttons
-  function clickRadio(e){
-    //check if clicked is current selection, then open more info
-    if(e.target==e.target.parentElement.curClicked){
-      frame.src += '?'+e.target.getAttribute("loc");
-      frameWrap.style.display = "flex";
-      document.body.style.overflowY = "hidden";
-    }
-    else{
-      let cards = e.target.parentElement.parentElement.querySelector(".carousel-cards").children;
-      let selected = parseInt(e.target.id.slice(-1));
-      cycle(cards,selected);
-    }
-    e.target.parentElement.curClicked=e.target;
-  }
-  //set location of each carousel card
-  async function cycle (cards,selected){
-    cards[selected].className="front";
-    cards[selected].setAttribute("animate","false");
-    cards[mod(selected+1,cards.length)].className="right";
-    cards[mod(selected+1,cards.length)].setAttribute("animate","false");
-    cards[mod(selected-1,cards.length)].className="left";
-    cards[mod(selected-1,cards.length)].setAttribute("animate","false");
-    for(let i=0; i<cards.length-3; i++)
-      cards[mod(selected+2+i,cards.length)].className="back";
-    await new Promise(r => setTimeout(r, 400));
-    cards[selected].setAttribute("animate","true");
-  }
-  const mod = (n,m) => ((n%m)+m)%m;
-  
-  //put this inside document ready
+} );
 
-  function closePreview(){
-    frameWrap.style.display="none";
-    document.body.style.overflowY="auto";
+//handle clicks on radio buttons
+function clickRadio(e){
+  //check if clicked is current selection, then open more info
+  if(e.target==e.target.parentElement.curClicked){
+    var newSrc= `${$("#preview").attr('src').split("?")[0]}?${e.target.getAttribute("loc")}`;
+    $("#preview").attr('src',newSrc);
+    $("#preview-wrapper").css({display:"flex"});
+    document.body.style.overflowY = "hidden";
   }
+  else{
+    let cards = e.target.parentElement.parentElement.querySelector(".carousel-cards").children;
+    let selected = parseInt(e.target.id.slice(-1));
+    cycle(cards,selected);
+  }
+  e.target.parentElement.curClicked=e.target;
+}
+//set location of each carousel card
+async function cycle (cards,selected){
+  cards[selected].className="front";
+  cards[selected].setAttribute("animate","false");
+  cards[mod(selected+1,cards.length)].className="right";
+  cards[mod(selected+1,cards.length)].setAttribute("animate","false");
+  cards[mod(selected-1,cards.length)].className="left";
+  cards[mod(selected-1,cards.length)].setAttribute("animate","false");
+  for(let i=0; i<cards.length-3; i++)
+    cards[mod(selected+2+i,cards.length)].className="back";
+  await new Promise(r => setTimeout(r, 400));
+  cards[selected].setAttribute("animate","true");
+}
+//close the preview window and update carousel
+function closePreview(){
+  $("#preview-wrapper").hide();
+  $(document.body).css({overflowY:'auto'});
+  //get current card index for #preview and cycle current carousel
+  let loc = $("#preview").contents().get(0).location.href.split("?")[1].split("$");
+  let curCarousel = $(".carousel")[loc[0]];
+  let cards = curCarousel.querySelector(".carousel-cards").children;
+  let selected = parseInt(loc[1]);
+  cycle(cards,selected);
+
+}
+//keypress handling
+$(document).keyup(function(e){
+  if(e.key==="Escape"){
+    console.log("pressed");
+    if($("#preview-wrapper").is(":visible")) closePreview();
+  }
+});
+
+//utility functions
+const mod = (n,m) => ((n%m)+m)%m;

@@ -5,21 +5,25 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee">
         <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/arual">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../carouselData.js"></script>
+        <script src="previews.js"></script>
     </head>
     <body>
         <div id="main">
             <div id="text-bar">
+                <div id="nav-bar">
+                    <!--convert these to buttons to refresh the data-->
+                    <button id="prevPre"><-</button>
+                    <p id="counter"></p>
+                    <button id="nextPre">-></button>
+                </div>
                 <div id="info-header">
-                    <div id="nav-bar">
-                        <!--convert these to buttons to refresh the data-->
-                        <a id="prevPre" href="DressStarsPre.html" title="A Dress of Stars"><-</a>
-                        <p id="counter"></p>
-                        <a id="nextPre" href="TarotJournalPre.html" title="Tarot Journal">-></a>
-                    </div>
                     <h1 id="title"></h1>
                     <p id="tags"></p>
                 </div>
-                <div id="description">
+                <div id="description-group">
                     <br>
                     <h2>Timeline</h2>
                     <p id="timelineInfo"></p>
@@ -36,7 +40,3 @@
         <div id="loading">Loading...</div>
     </body>
 </html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="previewData.js"></script>
-<script src="previews.js"></script>

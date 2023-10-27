@@ -48,7 +48,7 @@ h2{
     overflow-y: auto;
     position: absolute;
     left: 0;
-    background-color: #fffaf03d;
+    background-color: #fffaf0a6;
     border-radius: 10px;
     z-index: 3;
 }
@@ -74,7 +74,8 @@ h2{
 }
 #info-header{
     position: sticky;
-    top:0;
+    padding-top: 3rem;
+    top: 0;
     background-color: floralwhite;
     padding-bottom: 2%;
     z-index: 2;
@@ -84,13 +85,24 @@ h2{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 44%;
+    padding: 10px;
+    z-index: 4;
+}
+#description-group{
+    padding-left: 6%;
 }
 #description{
-    padding-left: 6%;
     white-space: pre-wrap;
 }
 #tags{
     text-align: center;
     text-transform: uppercase;
     color:var(--card-footer-color);
+}
+button{
+    z-index: 4;
 }
