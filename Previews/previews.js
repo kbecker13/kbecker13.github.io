@@ -25,7 +25,7 @@ function updatePreview(){
     $("#tags").html(preData.tags);
     //***test if there is timeline info, if not, hide
     $("#timelineInfo").html(preData.timelineInfo);
-    $("#description").text(preData.description);
+    $("#description").html(preData.description);
     $("#image img").attr('src',preData.preImageUrl);
 }
 

@@ -96,7 +96,7 @@ h2{
     padding-left: 6%;
 }
 #description{
-    white-space: pre-wrap;
+    white-space: pre-line;
 }
 #tags{
     text-align: center;

@@ -1,6 +1,11 @@
 /* 
 Things to fix
   add x button to iframe
+  add resize when in landscape?
+  image isn't fullscreen on tablet
+  rewrite preview bounce-in relative to text size rather than vh
+  add a pop-up recommending landscape mode, or force to landscape?
+  find smaller, width or height, use that for card frame
 */
 //#endregion
 
