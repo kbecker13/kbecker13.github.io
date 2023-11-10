@@ -1,9 +1,16 @@
+/*************************************************************
+ * Filename: index.css
+ * Description: Stylesheet for main page of personal website
+ * Copyright: 2023 Kaitlyn Becker
+ *************************************************************/
+
 :root{
     --coral: #F28585;
     --blush:#fcd7d7;
     --blush2: #fbc6c8;
     --off-white:#F2E8DF;
     --soft-gold: #ffedba;
+    --soft-copper:#ffdcba;
     --gold:#F2B263;
     --soft-brown:#e8cfa3;
     --yellow-green:#a0a478;
@@ -159,7 +166,7 @@ h1, h2{
     margin-top:15vh;
     position: sticky;
     top:0;
-    background: var(--soft-gold);
+    background-image: linear-gradient(var(--soft-gold),var(--soft-copper));
 }
 .last-page{
     margin: 0;
@@ -323,22 +330,25 @@ h1, h2{
         z-index: 2;
     }
     .card-footer{
-        width:101%;
-        height: 16vh;
-        bottom:-16vh;
-        transition: bottom .5s;    
+        width: 100%;
+        height: 8rem; 
+        bottom: -8rem;
+        transition: bottom .5s;
         display: flex;
         justify-content: space-between;
-        padding:3vh;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1rem solid var(--card-footer-color);
         z-index: 4;
         background: var(--card-footer-color);
-    }
+        }
     .card-detail{
         font-size: .9rem;
         white-space: pre-line;
     }
     .card-footer img{
-        height: 30%;
+        width: 13%;
+        object-fit: contain;
         top:10%;
         position: relative;
     }
@@ -383,11 +393,11 @@ h1, h2{
             z-index: 5;
         }
         .front[animate="true"]:hover .card-footer{
-            bottom:-6vh;
+            bottom:-1rem;
             animation: bounceIn2 .5s both;
         }
         .front[animate="true"]:hover .card-content>div{
-            bottom:6.6vh;
+            bottom:5rem;
             animation:bounceIn2 .5s both;
         }
     /*#endregion*/

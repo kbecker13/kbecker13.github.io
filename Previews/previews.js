@@ -1,8 +1,8 @@
-/*
-show/hide timeline if empty
-show/hide video if empty
-
-*/
+/*************************************************************
+ * Filename: previews.js
+ * Description: Populates the preview window for the currently selected portfolio asset
+ * Copyright: 2023 Kaitlyn Becker
+ *************************************************************/
 
 $( document ).ready(function() {
     if (location.href.includes("previews.html?")) updatePreview();
@@ -18,7 +18,8 @@ $( document ).ready(function() {
     });
 });
 //populate preview page template
-function updatePreview(){
+async function updatePreview(){
+    $(".fade").css("opacity",0);
     var loc = location.href.split('?')[1].split('$');
     preData = carouselArrays[loc[0]][loc[1]];
     $("#title").html(preData.title);
@@ -27,9 +28,12 @@ function updatePreview(){
         );
     $("#tags").html(preData.tags);
     //***test if there is timeline info, if not, hide
+    (preData.timelineInfo)?$("#timeline").show():$("#timeline").hide();
     $("#timelineInfo").html(preData.timelineInfo);
+
     $("#description").html(preData.description);
-    $("#image img").attr('src',preData.preImageUrl);
+    $("#image iframe").attr('src',preData.preUrl);
+    $(".fade").css("opacity",100);
 }
 
 

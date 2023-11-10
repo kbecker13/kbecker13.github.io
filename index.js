@@ -1,3 +1,10 @@
+/*************************************************************
+ * Filename: index.js
+ * Description: Uses carouselData.js to populate the image carousels of the main page
+ *              Executes input handling to rotate carousel and open/close preview iFrame
+ * Copyright: 2023 Kaitlyn Becker
+ *************************************************************/
+
 /* 
 Things to fix
   add x button to iframe
@@ -95,7 +102,8 @@ function closePreview(){
   let cards = curCarousel.querySelector(".carousel-cards").children;
   let selected = parseInt(loc[1]);
   cycle(cards,selected);
-
+  let radio = curCarousel.querySelector(".carousel-radio");
+  radio.curClicked = radio.children[selected];
 }
 //keypress handling
 $(document).keyup(function(e){

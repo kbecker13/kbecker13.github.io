@@ -1,3 +1,8 @@
+<!-----------------------------------------
+-Filename: previews.html
+-Description: Skeleton layout for portfolio asset description window
+-Copyright: 2023 Kaitlyn Becker
+------------------------------------------>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,30 +15,31 @@
         <script src="../carouselData.js"></script>
         <script src="previews.js"></script>
     </head>
-    <body>
+    <body class="fade">
         <div id="main">
             <div id="text-bar">
                 <div id="nav-bar">
                     <!--convert these to buttons to refresh the data-->
-                    <button id="prevPre"><-</button>
+                    <button id="prevPre"><img src="../Assets/UI Graphics/prevArrow.png"></button>
                     <p id="counter"></p>
-                    <button id="nextPre">-></button>
+                    <button id="nextPre"><img src="../Assets/UI Graphics/nextArrow.png"></button>
                 </div>
                 <div id="info-header">
                     <h1 id="title"></h1>
                     <p id="tags"></p>
                 </div>
-                <div id="description-group">
-                    <br>
-                    <h2>Timeline</h2>
-                    <p id="timelineInfo"></p>
-                    <h2>Description</h2>
-                    <p id="description"></p>
+                <div id="description-wrap">
+                    <div id="description-group">
+                        <h2 id="timeline">Timeline</h2>
+                        <p id="timelineInfo"></p>
+                        <h2>Description</h2>
+                        <p id="description"></p>
+                    </div>
                 </div>
             </div>
             <div id="image">
                 <div>
-                    <img>
+                    <iframe src=""></iframe>
                 </div>
             </div>
         </div>
