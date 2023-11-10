@@ -151,7 +151,7 @@ h1, h2{
 .page{
     width: 100vw;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-x: hidden;
     padding: 2vw;
     align-items: center;
     display: flex;
@@ -335,6 +335,7 @@ h1, h2{
     }
     .card-detail{
         font-size: .9rem;
+        white-space: pre-line;
     }
     .card-footer img{
         height: 30%;
@@ -505,12 +506,12 @@ h1, h2{
   }
 }
 
-@media only screen and (orientation:landscape){
+/* @media only screen and (orientation:landscape){
   #container {
      -webkit-transform: rotate(0deg);
      -moz-transform: rotate(0deg);
      -o-transform: rotate(0deg);
      -ms-transform: rotate(0deg);
      transform: rotate(0deg);
-  }
-}
+  } 
+}*/

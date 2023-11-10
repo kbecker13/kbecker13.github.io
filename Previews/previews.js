@@ -1,4 +1,7 @@
 /*
+show/hide timeline if empty
+show/hide video if empty
+
 */
 
 $( document ).ready(function() {

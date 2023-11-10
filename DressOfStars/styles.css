@@ -1,0 +1,268 @@
+@font-face{
+  font-family: cake;
+  src:url(cinnamon_cake.ttf);
+}
+@font-face{
+  font-family: belle;
+  src:url(peaelliebellie.ttf);
+}
+@font-face{
+  font-family: ginger;
+  src:url(Gingersnaps.ttf);
+}
+@font-face{
+  font-family: puppy;
+  src:url(PuppyPooky.ttf);
+}
+html, body {
+  overflow-x: hidden;
+  width:100%;
+  height: 100%;
+}
+body {
+  font-family: monospace;
+  font-size: 18px;
+  background: #111;
+  color: #666;
+  margin: 0;
+  position: relative;
+}
+img {
+  display: block;
+  height: 100%;
+}
+.layer{
+  width: 100%;
+  height: 100%;
+}
+.top{
+  float:left;
+}
+.debug{
+  margin-left:70%;
+  background-color: blue;
+}
+#tWrap{
+position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: black;
+  z-index: 1002;
+}
+#wrapper{
+position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: black;
+}
+#pWarning{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: #B0B8B7;
+  z-index: 1001;
+  display:none;
+}
+#pWarningText{
+  position: relative;
+  font-size: 30px;
+  text-align: center;
+  top:50%;
+  margin-top: -30px;
+}
+#phone{
+  display:none;
+  background-color: black;
+  z-index: 1002;
+  position:fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+}
+#phoneText{
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    top:50%;
+    margin-top: -15px;
+}
+#title{
+  position:relative;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: black;
+  z-index: 1002;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#titleImg{
+  position:absolute;
+  display: block;
+  top:0px;
+  left:0px;
+  width:100%;
+}
+#titleBG{
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+#startButton{
+  background-color: #aaaaaa;
+  position:relative;
+  padding:10px;
+  border-radius: 25px;
+  float:right;
+  font-family: cake;
+  font-size: 36px;
+  top:-3%;
+  right:3%;
+  margin-top: -56px;
+  z-index: 1003;
+}
+#loader{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: black;
+  z-index: 1000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#loadText{
+  position: relative;
+  text-align: center;
+  top:50%;
+  margin-top:-30px;
+  font-size: 60px;
+}
+#next{
+  position: relative;
+  float: right;
+  right:3%;
+  top:90%;
+  margin-top: -2%;
+  z-index: 900;
+  height: 10%;
+}
+#back{
+  position: relative;
+  left:3%;
+  top:90%;
+  margin-top: -2%;
+  z-index: 900;
+  height: 10%;
+  display: none;
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
+  background-color: #AAAAAA;
+}
+#storyWrapper{
+  position: absolute;
+  left:0px;
+  top:0px;
+  width: 100%;
+  height:100%;
+}
+o-font{
+  font-family: belle;
+  font-size: 30px;
+}
+#story{
+  font-family: cake;
+  font-size: 36px;
+  position:relative;
+  top:58%;
+  left:10%;
+  z-index: 900;
+  width:45%;
+  background: rgba(255,255,255,0.5);
+  text-align: center;
+  border-radius: 20px;
+  padding:15px;
+  line-height: 36px;
+  /*border-style: solid;
+  border-width: 20px;
+  -moz-border-image: url(images/border2.png) 71 71 72 69 round;
+  -webkit-border-image: url(images/border2.png) 71 71 72 69 round;
+  -o-border-image: url(images/border2.png) 71 71 72 69 round;
+  border-image: url(images/border2.png) 71 71 72 69 round;*/
+}
+.scene {
+  position:absolute;
+  padding: 0;
+  margin: 0;
+  width:140%;
+  height:140%;
+  left:-20%;
+  top:-20%;
+  /*overflow: hidden;*/
+  /*width: 1028px;
+  height: 768px;*/
+}
+#ui{
+  position:absolute;
+  z-index: 11;
+  left:0px;
+  top:0px;
+  width: 100%;
+  font-size: 30px;
+}
+#chap{
+  position:absolute;
+  z-index: 10;
+  left:0px;
+  top:0px;
+  width: 100%;
+}
+#chapBar{
+  width:90%;
+  height:25px;
+  display: block;
+  position: relative;
+  margin:0 auto;
+  top:15px;
+}
+#bar{
+  width: 100%;
+  height: 20px;
+  /*border-radius: 8px;*/
+  
+  /*background: rgba(255,255,255,0.8);*/
+}
+#star{
+  height: 40px;
+  position: relative;
+  top: -40px;
+  margin-left: -9px;
+  left: 0%;
+}
+#pageSelect{
+  position:relative;
+  z-index: 10;
+  left:-10px;
+  float:right;
+  top:10px;
+}
