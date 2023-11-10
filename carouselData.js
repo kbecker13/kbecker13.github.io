@@ -190,7 +190,7 @@ const animationItems = [
     },
     {
         title:  "2D Animations",
-        imgUrl: "../Assets/Graphics/PreviewGraphics/Animation/2DAnimation.png",
+        imgUrl: "../Assets/Graphics/PreviewGraphics/Animation/2DAnimation.gif",
         bgUrl:  "../Assets/Graphics/PreviewGraphics/Animation/2DAnimationBG.png",
         detail: `Collection of 2D animations in a variety of techniques
         Softwares: Adobe Animate, Photoshop, Illustrator, Procreate`,
