@@ -260,33 +260,35 @@ h1, h2{
         width: 100%;
         bottom: 1px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-end;
         overflow: hidden;
         transition: all .4s;
     }
-    .card-content>div{
-        bottom: 4vh;
-        transform: scaleX(0);
-        width:fit-content;
-        position: absolute;
-        transition: transform .4s, bottom .3s;
-        transform-origin: bottom left;
-    }
-    .card-content img{
+    .card-bg-img{
         height: 100%;    
         width: 100%;
         z-index: 3;
         object-fit: contain;
         object-position: bottom;
+        position:fixed;
     }
-    .card-content h2{
+    .card-title{
+        bottom: 4vh;
+        transform: scaleX(0);
+        width:fit-content;
+        position: relative;
+        transition: transform .4s, bottom .3s;
+        transform-origin: bottom left;
+    }
+    .card-title h2{
         font-size: 3vw;
         position: relative;
         color: var(--yellow-green);
         padding: 10px 25px 10px 20px;
         text-shadow: 1px 1px var(--off-white), -1px -1px var(--soft-brown);
     }
-    .card-content>div>div{
+    .card-title>div{
         width: 100%;
         height: 100%;
         position: absolute;
@@ -330,27 +332,25 @@ h1, h2{
         z-index: 2;
     }
     .card-footer{
-        width: 100%;
-        height: 8rem; 
-        bottom: -8rem;
-        transition: bottom .5s;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 4;
+        max-height: 0;
+        transition: .5s;
+        background: var(--card-footer-color);
+        border-left: var(--card-border-width) solid var(--soft-brown);
+        border-right: var(--card-border-width) solid var(--soft-brown);
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        border-bottom: 1rem solid var(--card-footer-color);
-        z-index: 4;
-        background: var(--card-footer-color);
         }
+    .card-footer img{
+        width: 10%;
+        object-fit: contain;
+    }
     .card-detail{
         font-size: .9rem;
         white-space: pre-line;
-    }
-    .card-footer img{
-        width: 13%;
-        object-fit: contain;
-        top:10%;
-        position: relative;
     }
     /*#region carousel rotation*/
         .left {
@@ -386,18 +386,19 @@ h1, h2{
             bottom: var(--card-border-width);
             animation:bounceIn .4s both;
         }
-        .front .card-content>div{
+        .front .card-title{
             font-size: 3vw;
             left: 5px;
             transform: scaleX(1);
             z-index: 5;
         }
         .front[animate="true"]:hover .card-footer{
-            bottom:-1rem;
+            max-height: 100%;
+            padding: 1rem;
             animation: bounceIn2 .5s both;
         }
-        .front[animate="true"]:hover .card-content>div{
-            bottom:5rem;
+        .front[animate="true"]:hover .card-title{
+            bottom:-1rem;
             animation:bounceIn2 .5s both;
         }
     /*#endregion*/
