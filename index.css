@@ -144,12 +144,14 @@ h1, h2{
     max-height: 70%;
     transform: translateX(50%);
     object-fit: contain;
+    opacity: 60%;
 }
 #about :nth-child(3){
     width:40%;
     max-height: 70%;
     transform: translateX(-50%);
     object-fit: contain;
+    opacity: 60%;
 }
 #about :nth-child(4){
     height: 80%;
