@@ -281,7 +281,7 @@ h1, h2{
         height: 100%;
         position: absolute;
         top:0;
-        border-image: url("Assets/UI Graphics/PlantSign.png") 130 400 fill stretch;
+        border-image: url("Assets/UIGraphics/PlantSign.png") 130 400 fill stretch;
         border-width: 32px 100px;
         border-style: solid;
     }
@@ -297,7 +297,7 @@ h1, h2{
     }
     .card-frame{
         z-index: 5;
-        border-image: url('Assets/UI Graphics/PlantFrame.png') 240 round;
+        border-image: url('Assets/UIGraphics/PlantFrame.png') 240 round;
         border-image-outset: 1.4vh;
         border-style:solid;
     }
