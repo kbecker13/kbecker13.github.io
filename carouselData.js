@@ -201,20 +201,6 @@ const animationItems = [
         While I don't often have as much time to devote to the art these days, I enjoy experimenting with new techniques and keep in practice to keep my skills sharp.
         `,
         preUrl:""
-    },
-    {
-        title:  "Facial Rigging",
-        imgUrl: "../Assets/Graphics/PreviewGraphics/Animation/Rigging.png",
-        bgUrl:  "../Assets/Graphics/PreviewGraphics/Animation/RiggingBG.png",
-        detail: `Advanced facial rigs for efficient lip-syncing
-        Software: Blender`,
-        tags:"#Blender #Rigging #Modeling #LipSync #FacialAnimation",
-        timelineInfo:"",
-        description:`One type of animation I find particularly fascinating is lip syncing. One can spend hours studying the intricacies of the minute changes in the face producing sound. We often get distracted by the mundanity of existing, and forget to appreciate the infinitely complex symphony of muscle, bone and air that comes together to create speech.
-
-        These are two examples of facial models and rigs I made, including a panel for different visemes (the faces that make particular sounds) to speed up or automate a simplified lip-sync.
-        `,
-        preUrl:""
     }
 ];
 const brandingItems = [
@@ -264,39 +250,17 @@ const brandingItems = [
 ];
 const educationItems = [
     {
-        title:  "Technology Integration",
-        imgUrl: "../Assets/Graphics/PreviewGraphics/Education/TechIntegration.png",
-        bgUrl:  "../Assets/Graphics/PreviewGraphics/Education/TechIntegrationBG.png",
-        detail: "Training teachers in functional and approachable tech integration",
-        tags:"",
+        title:  "eLearning",
+        imgUrl: "../Assets/Graphics/PreviewGraphics/Education/eLearning.png",
+        bgUrl:  "../Assets/Graphics/PreviewGraphics/Education/eLearningBG.png",
+        detail: "A collection of learning experiences created in Articulate Storyline, Powerpoint and Google Slides",
+        tags:"#Articulate360 #Storyline #Powerpoint #GoogleSlides #MicrosoftTeams",
         timelineInfo:"",
         description:`In my tenure as a career and technology teacher, I saw opportunities to use my expertise to help my fellow teachers who were not as technologically savvy. There was always a push for teachers to use technology within their classrooms, but not always guidance on best practices.
 
         I am passionate about integrating technology in the classroom <i>the right way</i>. A core tenet of good pedagogy is backwards design, i.e. starting from where you want the students to end up. In my various mentor and leadership roles in the district, I strove to make technology more approachable and seamless with pre-existing instructional design.
         
         This particular training was about meeting teachers and students where they were and gave them actionable guidance for how to integrate a tool into a pre-existing lesson. 
-        
-        `,
-        preUrl:""
-    },
-    {
-        title:  "Professional Development",
-        imgUrl: "../Assets/Graphics/PreviewGraphics/Education/ProDev.png",
-        bgUrl:  "../Assets/Graphics/PreviewGraphics/Education/ProDevBG.png",
-        detail: "Collection of trainings on a variety of topics",
-        tags:"",
-        timelineInfo:"",
-        description:`Coming from industry rather than a traditional educator background, I had a great deal of technology expertise to share with my colleagues. Starting early in my career, I made a name for myself as someone to reach out to with questions or problems. Through this, I discovered an aptitude and enjoyment for training educators.
-
-        During the Covid lockdown, when teaching remotely threw all of us into using new tools with no preparation or training, I stepped forward as a resource for my fellow teachers. From there, I expanded my scope from technical assistance to pedagogical training and mentorship.
-        
-        I designed and delivered numerous presentations on topics I am passionate about, centering a focus on real-world connection and student-driven learning. Presentations included titles such as: <ul>
-        <li>Feedforward: Encouraging your students to STEP UP on the journey to mastery.</li>
-        <li>Have More Meaningful Classroom Discussions: Are you reaching<i>every</i> student?</li>
-        <li>Transitioning Back: An exploration of the challenges and strategies
-        to bring students back into the physical classroom
-        </li></ul>        
-        <center><a target="_blank" href="https://drive.google.com/drive/folders/1sRVKEA0dnRkMYHDTpLI9VHUF4j75ADCU?usp=sharing">To access the public resources of an example presentation, click here.</a></center>
         
         `,
         preUrl:""
@@ -319,7 +283,7 @@ const educationItems = [
         preUrl:""
     },
     {
-        title:  "Tool Creation",
+        title:  "Tool Development and Training",
         imgUrl: "../Assets/Graphics/PreviewGraphics/Education/Tools.png",
         bgUrl:  "../Assets/Graphics/PreviewGraphics/Education/ToolsBG.png",
         detail: "Tools made to assist fellow teachers",
@@ -347,4 +311,4 @@ const educationItems = [
     }
 ];
 
-const carouselArrays = [codingItems,illustrationItems,animationItems,educationItems,brandingItems];
+const carouselArrays = [educationItems,codingItems,illustrationItems,animationItems,brandingItems];
