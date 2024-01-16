@@ -3,9 +3,7 @@
 -Description: Main page document for my personal portfolio website
 -Copyright: 2024 Kaitlyn Becker
 ------------------------------------------>
-<?php
-    include_once 'submit.php';
-?>
+
 <!doctype html>
 <html>
 <head>
@@ -127,9 +125,10 @@
                     <div class="col-sm-5 centered-column animateIn fadeInRight">
                         <h1>What I'm <span>About</span></h1>
                         <p>
-                            I am an experienced developer and artist with a diverse skillset
-                            cultivated through professional and personal enrichment opportunities
-                            across interconnected disciplines. 
+                            Howdy! My name is Kaitlyn Becker and I am an educator and designer based in Houston, TX. With a diverse skillset spanning instructional design, content creation, and interactive development, I am adept at crafting engaging learning experiences. I bring a wealth of expertise to the table: boasting a decade of experience in education, over a decade in coding, and nearly two decades in digital art creation. 
+                        </p>
+                        <p>
+                            As a lifelong learner, I firmly believe that the key to effective teaching is meeting learners where they are. I am confident that with the right approach, anyone is capable of learning anything.
                         </p>
                     </div>
                 </div>
@@ -189,7 +188,7 @@
                     </div>
                 </div>
 <!-- Add these back in once their pages are done -->
-                <div style="display: show;">
+                <div style="display: none;">
                     <h4 id="other-examples">Other Examples</h4>
                     <div id="eLearning-other" class="row gx-4">
                         <div class="col p-2"><div class="p-4 my-bg-dark-1 shadowed">
@@ -383,31 +382,12 @@
         </div>
         <div id="contact" class="container-fluid section my-bg-light">
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-5 centered-column">
                     <img class="img-fit" src="Assets/Graphics/contact.png">
                 </div>
                 <div class="col-sm-7 al-column px-4">
                     <h1>Let's Keep in <span>Contact</span></h1>
-                    <div class="container-fluid centered-column border border-1 p-4" style="min-height: 50vh;">
-                        <form id="contact-form" action="" method="post" action="" class="grid-container">
-                            <input id="name" name="name" autocomplete="name" placeholder="Your Name" >
-                            <input id="email" name="email" autocomplete="email" type="email" placeholder="Your email">
-                            <textarea id="message" name="message" autocomplete="none" placeholder="Your message"></textarea>
-                            <input type="hidden" name="submit-frm" value="1">
-                            <?php if(!empty($statusMsg)){ ?>
-                                <p class="status-msg <?php echo $status; ?>"><?php echo $statusMsg; ?></p>
-                            <?php>} ?>
-                            <button 
-                                id="captcha" class="g-recaptcha" 
-                                data-sitekey="6LfAH1ApAAAAAE_SWthDlZfZPrQ7sNLpoHJyuoxb"
-                                data-callback="onSubmit"
-                                data-action="submit"
-                            >
-                                Submit
-                            </button>
-                          </form>
-                          
-                    </div>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEFGSn1mLxu_41qyNucgQhS8rhJ_FvybtoQCOtnai48Rr-zA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
             </div>
         </div>
