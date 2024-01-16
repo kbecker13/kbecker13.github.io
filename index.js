@@ -58,3 +58,8 @@ const landingLoopStopper = new IntersectionObserver((watch)=>{
 const loopAnimElem = document.querySelectorAll(".loopAnim");
 const landingWatcher = document.getElementById("landing-watcher");
 landingLoopStopper.observe(landingWatcher,loopAnimElem);
+
+//submit contact form
+function onSubmit(token){
+    document.getElementById("contact-form").submit();
+}
