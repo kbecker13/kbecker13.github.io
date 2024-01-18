@@ -602,6 +602,10 @@ svg *{
     .animateIn{
         transition: none;
     }
+    .swingIn{
+        animation:none;
+        rotate:0deg;
+    }
 }
 /* #endregion */
 
@@ -659,5 +663,12 @@ svg *{
     95% { opacity: 100%; }
     97% { opacity: 0%; }
     100%{ opacity: 100%; }
+}
+@keyframes swing{
+    0%{rotate:-20deg;}
+    25%{rotate:10deg;}
+    50%{rotate:-5deg;}
+    75%{rotate:2deg;}
+    100%{rotate:0deg;}
 }
 /* #endregion */
