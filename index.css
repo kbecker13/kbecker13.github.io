@@ -291,11 +291,11 @@ img{
 /* IDs */
 /* #region landing */
 #landing-watcher{
-    height: 90vh;
+    /* height is set in index.js to accomodate mobile address bar */
     width: 100%;
     top: 0;
     left:0;
-    position: absolute;
+    position: relative;
     overflow: hidden;
 }
 #landing{
@@ -307,7 +307,7 @@ img{
     align-items: center;
     flex-direction: column;
     overflow:hidden;
-    position: sticky;
+    position: fixed;
     top:0;
     left:0;
 }
@@ -689,9 +689,9 @@ img{
 /* #region Animations */
 @keyframes glow{
     0%{opacity: 10%;}
-    25%{opacity: 45%;}
+    25%{opacity: 25%;}
     50%{opacity: 10%;}
-    70%{opacity: 30%;}
+    70%{opacity: 20%;}
     90%{opacity: 10%;}
     100%{opacity:10%}
 }
