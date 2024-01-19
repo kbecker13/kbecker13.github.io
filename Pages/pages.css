@@ -19,7 +19,7 @@
     font-size: 1.1rem;
     color:var(--default-text);
 }
-body{
+html,body{
     background-color: var(--light-bg);
     overflow-x: hidden;
 }
@@ -83,6 +83,9 @@ button:hover{
 #landing{
     display: flex;
     justify-content: center;
+}
+#landing.row{
+    flex-direction: row-reverse;
 }
 #landing .col-sm{
     position: relative;
