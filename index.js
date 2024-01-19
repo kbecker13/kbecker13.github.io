@@ -66,5 +66,6 @@ const loopStopper = new IntersectionObserver((entries)=>{
 const loopAnimElem = document.querySelectorAll(".watcher");
 loopAnimElem.forEach((el)=>loopStopper.observe(el));
 
+//programattically set the height to accomodate resizing mobile address bar
 document.getElementById("landing").style.height=window.innerHeight+"px";
 document.getElementById("landing-watcher").style.height=window.innerHeight+"px";
