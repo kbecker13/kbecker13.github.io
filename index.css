@@ -32,6 +32,9 @@ body{
     margin:0;
     overflow-y: auto;
     overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
 }
 h1, h1>span, h2, h3, h4{
     font-family: 'Arual',sans-serif;
@@ -78,6 +81,9 @@ svg *{
     fill:none;
     stroke:var(--light-header);
     stroke-width: 1px;
+}
+img{
+    pointer-events: none;
 }
 
 /* classes */
@@ -301,17 +307,27 @@ svg *{
     position: sticky;
     top:0;
 }
-#landing img{
+#landing-watcher .watcher{
+    height: 90vh;
+    width: 100vw;
     position: absolute;
+    top:0;
+    left:0;
+}
+#landing-watcher img{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
     height: 100%;
     opacity: 10%;
     mix-blend-mode: screen;
     animation: glow 10s infinite;
 }
-#landing img:nth-of-type(1){
+#landing-watcher img:nth-of-type(1){
     animation-delay: 1s;
 }
-#landing img:nth-of-type(2){
+#landing-watcher img:nth-of-type(2){
     animation-delay: 2s;
 }
 #landing-text{
@@ -350,7 +366,7 @@ svg *{
     margin-bottom: -3.75rem;
     height:14rem;
 }
-#landing-spacer>div{
+#landing-spacer>div:not(#plant-wrapper){
     width: 100%;
     z-index: 2;
 }
@@ -364,14 +380,50 @@ svg *{
     position: relative;
     background: var(--wood);
 }
-#landing-spacer img{
+#plant-wrapper{
     height:80%;
-    max-width: 50%;
+    width: 60%;
     right: 10vw;
     position: absolute;
     object-fit: contain;
     object-position: right top;
-    z-index: 3;
+    z-index: 3 !important;
+}
+#plant1{
+    right:17%;
+}
+#plant2{
+    right:7%;
+}
+#plant3{
+    right:-4%;
+}
+.plant{
+    position: absolute;
+    transform-origin: 50% 0;
+    height: 100%;
+}
+.plant img{
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    animation-delay: .4s;
+}
+.plant img:not(.base):not(.no-rotate-plant):not(.reverse-plant){
+    rotate:-20deg;
+}
+.plant .reverse-plant{
+    rotate: 20deg;
+}
+.plant .base{
+    position: relative;
+}
+.swingIn:not(.reverse-plant):not(.no-rotate-plant){
+    animation: swing 2s forwards;
+}
+.swingIn.reverse-plant:not(.no-rotate-plant){
+    animation: swing2 2s forwards;
 }
 #landing-spacer-text{
     display: none;
@@ -503,6 +555,14 @@ svg *{
     width:100%;
     height:70vh;
 }
+#contact img:nth-child(1){
+    animation: float 4s infinite;
+    transform-origin: 50% 100%;
+}
+#contact img:nth-child(2){
+    opacity: .1;
+    animation: floatShadow 4s infinite;
+}
 #footer{
     background-color: var(--dark-bg);
     height: 50vh;
@@ -545,10 +605,19 @@ svg *{
         font-size: 1rem;
         color:var(--dark-green);
     }
-    #landing-spacer img {
-        height: 65%;
-        max-width: 35%;
-        right: 1vw;
+    #plant-wrapper{
+        right:2vw;
+        height: 18vh;
+        width: 33%;
+    }
+    #plant1{
+        right:50%;
+    }
+    #plant2{
+        right:22%;
+    }
+    #plant3{
+        right:-4%;
     }
     #landing-spacer>div:nth-child(2){
         height: 8vh;
@@ -664,11 +733,32 @@ svg *{
     97% { opacity: 0%; }
     100%{ opacity: 100%; }
 }
+@keyframes float{
+    0%{transform: rotate(0deg) translate(0, 0%);}
+    25%{transform: rotate(3deg) translate(1%, -5%);}
+    50%{transform: rotate(0deg) translate(0, 0%);}
+    75%{transform: rotate(-3deg) translate(-1%, -5%);}
+    100%{transform: rotate(0deg) translate(0, 0%);}
+}
+@keyframes floatShadow{
+    0%{scale:100%}
+    25%{scale:80%}
+    50%{scale:100%}
+    75%{scale:80%}
+    100%{scale:100%}
+}
 @keyframes swing{
     0%{rotate:-20deg;}
     25%{rotate:10deg;}
     50%{rotate:-5deg;}
     75%{rotate:2deg;}
+    100%{rotate:0deg;}
+}
+@keyframes swing2{
+    0%{rotate:20deg;}
+    25%{rotate:-10deg;}
+    50%{rotate:5deg;}
+    75%{rotate:-2deg;}
     100%{rotate:0deg;}
 }
 /* #endregion */

@@ -45,7 +45,6 @@
 <body>
     <div class="container-fluid p-0">
         <a id="home"></a>
-        <div id="landing-watcher"></div>
         <div id="landing" class="animateIn fadeIn asyncImage" data-src="Assets/Graphics/Landing.jpg">
             <div id="landing-text" class="animateIn fadeIn d-1">
                 <h1>Welcome!</h1>
@@ -64,6 +63,8 @@
                     </span>
                 </div>
             </div>
+        </div>
+        <div id="landing-watcher" class="watcher">
             <img class="animateIn fadeIn loopAnim" src="Assets/Graphics/landing1.png">
             <img class="animateIn fadeIn loopAnim" src="Assets/Graphics/landing2.png">
             <img class="animateIn fadeIn loopAnim" src="Assets/Graphics/landing3.png">
@@ -88,7 +89,29 @@
                     </span>
                 </div>
             </div>
-            <img src="Assets/Graphics/plants.png">
+            <div id="plant-wrapper" class="animateIn fadeIn">
+                <div id="plant1" class="plant">
+                    <img src="Assets/Graphics/HangingPlants/plant1-tassel1.png" style="transform-origin: 9% 74%;">
+                    <img src="Assets/Graphics/HangingPlants/plant1-tassel2.png" style="transform-origin: 84% 74%;">
+                    <img class="base no-rotate-plant" src="Assets/Graphics/HangingPlants/plant1-base.png">
+                    <img src="Assets/Graphics/HangingPlants/plant1-plant.png">
+                </div>
+                <div id="plant2" class="plant">
+                    <img src="Assets/Graphics/HangingPlants/plant2-tassel.png" style="transform-origin: 57% 62%;">
+                    <img class="reverse-plant swingIn" src="Assets/Graphics/HangingPlants/plant2-plant.png" style="transform-origin: 56% 45%;">
+                    <img class="base no-rotate-plant" src="Assets/Graphics/HangingPlants/plant2-base.png">
+                    <div></div>
+                </div>
+                <div id="plant3" class="plant">
+                    <img src="Assets/Graphics/HangingPlants/plant3-tassel1.png" style="transform-origin: 37% 69%;">
+                    <img src="Assets/Graphics/HangingPlants/plant3-tassel2.png" style="transform-origin: 43% 70%;">
+                    <img src="Assets/Graphics/HangingPlants/plant3-tassel3.png" style="transform-origin: 59% 69%;">
+                    <img class="base no-rotate-plant" src="Assets/Graphics/HangingPlants/plant3-base.png">
+                    <img src="Assets/Graphics/HangingPlants/plant3-plant.png">
+                    <img class="no-rotate-plant" src="Assets/Graphics/HangingPlants/plant3-plant2.png">
+                    <div></div>
+                </div>
+            </div>
         </div>
         <nav id="navbar" class="navbar navbar-expand-sm">
             <button class="navbar-toggler ms-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -382,10 +405,11 @@
         </div>
         <div id="contact" class="container-fluid section my-bg-light">
             <div class="row">
-                <div class="col-sm-5 centered-column">
-                    <img class="img-fit" src="Assets/Graphics/contact.png">
+                <div class="col-sm-5 centered-column watcher">
+                    <img class="img-fit animateIn fadeInLeft loopAnim" src="Assets/Graphics/contact.png">
+                    <img class="img-fit animateIn fadeInLeft loopAnim" src="Assets/Graphics/contactShadow.png">
                 </div>
-                <div class="col-sm-7 al-column px-4">
+                <div class="col-sm-7 al-column px-4 animateIn fadeInRight">
                     <h1>Let's Keep in <span>Contact</span></h1>
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEFGSn1mLxu_41qyNucgQhS8rhJ_FvybtoQCOtnai48Rr-zA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>

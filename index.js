@@ -13,13 +13,25 @@ window.onscroll = function() {
 
 //Animations observers
 const fadeObserver = new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-        if(entry.isIntersecting) entry.target.classList.add("fadeInShow");
-    });
+  entries.forEach((entry)=>{
+      if(entry.isIntersecting) entry.target.classList.add("fadeInShow");
+  });
 },{threshold:0.5});
 
 const fadeElements = document.querySelectorAll(".animateIn");
 fadeElements.forEach((el)=>fadeObserver.observe(el));
+
+const plantObserver = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting) {
+          var plants = document.querySelectorAll(".plant,.plant img");
+          plants.forEach((el)=>el.classList.add("swingIn"));
+        }
+    });
+},{threshold:0.9});
+
+const plantWrapper = document.getElementById("plant-wrapper");
+plantObserver.observe(plantWrapper);
 
 // This code is from Medium.com's article: How to optimize image loading on your website
 (() => {
@@ -41,20 +53,15 @@ fadeElements.forEach((el)=>fadeObserver.observe(el));
   })();
 
 //Stop looping animations when offscreen
-const landingLoopStopper = new IntersectionObserver((watch)=>{
-    watch.forEach((entry)=>{
+const loopStopper = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
         if(entry.isIntersecting){
-            loopAnimElem.forEach((anim)=>{
-                anim.style.animationPlayState='running';
-            });
+          for (anim of entry.target.children) anim.style.animationPlayState='running';
         }
         else{
-            loopAnimElem.forEach((anim)=>{
-                anim.style.animationPlayState='paused';
-            });
+            for(anim of entry.target.children) anim.style.animationPlayState='paused';
         }
     });
 });
-const loopAnimElem = document.querySelectorAll(".loopAnim");
-const landingWatcher = document.getElementById("landing-watcher");
-landingLoopStopper.observe(landingWatcher,loopAnimElem);
+const loopAnimElem = document.querySelectorAll(".watcher");
+loopAnimElem.forEach((el)=>loopStopper.observe(el));
