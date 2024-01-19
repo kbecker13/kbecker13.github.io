@@ -161,11 +161,13 @@ img{
     padding-top: 4vh;
     padding-bottom: 14vh;
     margin-bottom: -1px;
+    overflow: hidden;
 }
 .stack-layers{
     position: relative;
     overflow: hidden;
     justify-content: center;
+    align-items: end;
     display: flex;
     overflow: visible;
 }
@@ -580,6 +582,14 @@ img{
     min-height: 0vh;
 }
 /* #region Responsive handling */
+@media screen and (max-width:910px){
+    #coding>div>div:nth-child(3){
+        margin-top: 0rem;
+    }
+    #coding-bg{
+        padding:0%;
+    }
+}
 @media screen and (max-width: 576px){
     #landing,#landing-watcher{
         height: 60vh;
