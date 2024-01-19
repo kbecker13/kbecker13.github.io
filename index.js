@@ -65,3 +65,5 @@ const loopStopper = new IntersectionObserver((entries)=>{
 });
 const loopAnimElem = document.querySelectorAll(".watcher");
 loopAnimElem.forEach((el)=>loopStopper.observe(el));
+
+document.getElementById("landing").style.height=window.innerHeight+"px";
