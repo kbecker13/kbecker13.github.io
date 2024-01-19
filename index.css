@@ -292,12 +292,14 @@ img{
 /* #region landing */
 #landing-watcher{
     height: 90vh;
-    width: 100vw;
+    width: 100%;
     top: 0;
+    left:0;
     position: absolute;
+    overflow: hidden;
 }
 #landing{
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0%;
     background: url('Assets/Graphics/Landing-sm.jpg') center top / auto 100% no-repeat;
@@ -307,6 +309,7 @@ img{
     overflow:hidden;
     position: sticky;
     top:0;
+    left:0;
 }
 #landing-watcher .watcher{
     height: 90vh;
