@@ -331,7 +331,6 @@ img{
     opacity: 10%;
     mix-blend-mode: screen;
     animation: glow 10s infinite;
-    background-color: #000;
 }
 #landing-watcher img:nth-of-type(1){
     animation-delay: 1s;

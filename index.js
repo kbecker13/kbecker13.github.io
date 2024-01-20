@@ -16,7 +16,7 @@ const fadeObserver = new IntersectionObserver((entries)=>{
   entries.forEach((entry)=>{
       if(entry.isIntersecting) entry.target.classList.add("fadeInShow");
   });
-},{threshold:0.5});
+},{threshold:0.3});
 
 const fadeElements = document.querySelectorAll(".animateIn");
 fadeElements.forEach((el)=>fadeObserver.observe(el));
@@ -66,6 +66,25 @@ const loopStopper = new IntersectionObserver((entries)=>{
 const loopAnimElem = document.querySelectorAll(".watcher");
 loopAnimElem.forEach((el)=>loopStopper.observe(el));
 
-//programattically set the height to accomodate resizing mobile address bar
-document.getElementById("landing").style.height=window.innerHeight+"px";
-document.getElementById("landing-watcher").style.height=window.innerHeight+"px";
+//programattically set the height to accommodate mobile sizing
+function resize(){
+  if(screen.width>576){
+    document.getElementById("landing").style.height=window.innerHeight+"px";
+    document.getElementById("landing-watcher").style.height=window.innerHeight+"px";
+  }
+  const about = document.getElementById("about");
+  console.log(about.offsetHeight);
+  if(about.offsetHeight>screen.height) {
+    about.children[0].style.position = "relative";
+    about.children[0].children[0].style.position = "relative";
+    about.children[0].children[0].style.margin = "0";
+  }
+  else {
+    about.children[0].style.position = "absolute";
+    about.children[0].style.position = "absolute";
+    about.children[0].children[0].style.margin = "0 0 15vh 0";
+  }
+}
+
+screen.orientation.addEventListener("change",resize);
+resize();
