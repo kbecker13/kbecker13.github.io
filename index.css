@@ -120,15 +120,11 @@ img{
     opacity: 1;
     transform: translate(0);
 }
-.page::after{
-    content: "";
-    display: table;
-}
 .page-wrapper{
     position: relative;
     width:100vw;
     height: fit-content;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background: var(--off-white);
 }
 .page-parent{
@@ -162,8 +158,8 @@ img{
 .section{
     position: relative;
     min-height: 50vh;
-    padding-top: 4vh;
-    padding-bottom: 14vh;
+    padding-top: 10vh;
+    padding-bottom: 15vh;
     margin-bottom: -1px;
     overflow: hidden;
 }
@@ -296,6 +292,9 @@ img{
     opacity: 1;
     filter: saturate(1);
 }
+.d-1{
+    transition-delay: .5s;
+}
 /* IDs */
 /* #region landing */
 #landing-watcher{
@@ -380,7 +379,7 @@ img{
 }
 #landing-spacer>div:not(#plant-wrapper){
     width: 100%;
-    z-index: 2;
+    z-index: 3;
 }
 #landing-spacer>div:nth-child(1){
     position: absolute;
@@ -399,7 +398,7 @@ img{
     position: absolute;
     object-fit: contain;
     object-position: right top;
-    z-index: 3 !important;
+    z-index: 4 !important;
 }
 #plant1{
     right:17%;
@@ -439,7 +438,7 @@ img{
 }
 #landing-spacer-text{
     display: none;
-    z-index: 2;
+    z-index: 3;
 }
 #landing-spacer-text .rotate{
     animation: none;
@@ -448,23 +447,27 @@ img{
 #navbar{
     position: sticky;
     top:-1px;
-    z-index: 2;
+    z-index: 3;
     padding-left: 5vw;
     text-transform: uppercase;
     transition: top .5s;
     background: var(--off-white-80);
 }
+#about{
+    background-color: var(--off-white);
+}
 #about h1{
-    width: 100%;
     text-align: right;
 }
-#about .page img{
+#about img{
     width: 55%; 
     max-height: calc(100vh - 5rem);   
     object-fit: contain;
     float:left;
     shape-outside: polygon(0% 0%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 100%);
     shape-margin: 3vw;
+    position: relative;
+    z-index: 2;
 }
 #works-spacer h1{
     position: absolute;
@@ -659,14 +662,27 @@ img{
     }
     #navbar{
         background: transparent;
+        height: 0;
+        text-align: center;
     }
     .navbar-collapse.collapse{
-        background: #ffffff88;
+        background: #ffffffdd;
+        transition:all .2s;
+        opacity: 0;
         padding: 10px;
         margin-right: 10px;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .navbar-collapse.collapse.show{
+        opacity:1;
     }
     .navbar-toggler{
-        background: #ffffff33;
+        background: #ffffffaa;
+    }
+    .navbar-toggler:focus{
+        box-shadow: 0 0 12px var(--drop-shadow);
     }
     #works-spacer h1{
         right:0;

@@ -10,7 +10,7 @@
     --drop-shadow:#4d645850;
     --drop-shadow-text:#33664080;
     --light-header:#dcebe3;
-    --light-sub-header:#B07E97;
+    --light-sub-header:#7eb094;
 
 }
 *{
@@ -129,6 +129,7 @@ button:hover{
 #navbar{
     position: absolute;
     width: 100%;
+    z-index: 2;
 }
 #collapsibleNavbar{
     justify-content: end;
@@ -160,6 +161,13 @@ button:hover{
     /* box-shadow: var(--dark-bg) 1vw 1vh; */
     filter: drop-shadow(1vw 1vh  var(--dark-bg));
 }
+.nav-item a{
+    color: var(--dark-header);
+    transition: color .25s;
+}
+.nav-item a:hover{
+    color: var(--light-sub-header);
+}
 /* #region Responsive handling */
 @media screen and (max-width: 576px){
     img{
@@ -169,5 +177,28 @@ button:hover{
     #landing img{
         left:0%;
         width: 90%;
+    }
+    #navbar{
+        text-align: right;
+    }
+    .navbar-collapse.collapse{
+        background: #ffffffdd;
+        transition:all .2s;
+        opacity: 0;
+        padding: 10px;
+        margin-right: 10px;
+        margin-left:10vw;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .navbar-collapse.collapse.show{
+        opacity:1;
+    }
+    .navbar-toggler{
+        background: #ffffffaa;
+    }
+    .navbar-toggler:focus{
+        box-shadow: 0 0 12px var(--drop-shadow);
     }
 }

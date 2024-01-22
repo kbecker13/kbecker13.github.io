@@ -7,6 +7,7 @@ window.onscroll = function() {
     nav.style.top = "-1px";
   } else {
     nav.style.top = "-4rem";
+    nav.children[1].classList.remove("show");
   }
   prevScrollpos = currentScrollPos;
 }
@@ -73,7 +74,6 @@ function resize(){
     document.getElementById("landing-watcher").style.height=window.innerHeight+"px";
   }
   const about = document.getElementById("about");
-  console.log(about.offsetHeight);
   if(about.offsetHeight>window.innerHeight) {
     about.children[0].style.position = "relative";
     about.children[0].children[0].style.position = "relative";
