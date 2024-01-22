@@ -120,11 +120,15 @@ img{
     opacity: 1;
     transform: translate(0);
 }
+.page::after{
+    content: "";
+    display: table;
+}
 .page-wrapper{
     position: relative;
     width:100vw;
     height: fit-content;
-    min-height: 130vh;
+    min-height: 100vh;
     background: var(--off-white);
 }
 .page-parent{
@@ -450,10 +454,17 @@ img{
     transition: top .5s;
     background: var(--off-white-80);
 }
+#about h1{
+    width: 100%;
+    text-align: right;
+}
 #about .page img{
-    width: 100%; 
+    width: 55%; 
     max-height: calc(100vh - 5rem);   
     object-fit: contain;
+    float:left;
+    shape-outside: polygon(0% 0%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 100%);
+    shape-margin: 3vw;
 }
 #works-spacer h1{
     position: absolute;
@@ -659,6 +670,12 @@ img{
     }
     #works-spacer h1{
         right:0;
+    }
+    #about .page img{
+        float: none;
+        width: 100%;
+        shape-outside: none;
+        shape-margin: 0;
     }
     #coding-bg{
         padding:0;
