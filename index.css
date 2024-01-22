@@ -327,7 +327,7 @@ img{
     top: 0;
     left: 50%;
     translate: -50% 0;
-    height: 100%;
+    height: inherit;
     opacity: 10%;
     mix-blend-mode: screen;
     animation: glow 10s infinite;

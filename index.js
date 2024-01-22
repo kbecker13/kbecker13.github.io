@@ -74,15 +74,15 @@ function resize(){
   }
   const about = document.getElementById("about");
   console.log(about.offsetHeight);
-  if(about.offsetHeight>screen.height) {
+  if(about.offsetHeight>window.innerHeight) {
     about.children[0].style.position = "relative";
     about.children[0].children[0].style.position = "relative";
     about.children[0].children[0].style.margin = "0";
   }
   else {
-    about.children[0].style.position = "absolute";
-    about.children[0].style.position = "absolute";
-    about.children[0].children[0].style.margin = "0 0 15vh 0";
+    about.children[0].style.position = "";
+    about.children[0].children[0].style.position = "";
+    about.children[0].children[0].style.margin = "";
   }
 }
 
