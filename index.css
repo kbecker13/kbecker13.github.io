@@ -120,30 +120,6 @@ img{
     opacity: 1;
     transform: translate(0);
 }
-.page-wrapper{
-    position: relative;
-    width:100vw;
-    height: fit-content;
-    /* min-height: 100vh; */
-    background: var(--off-white);
-}
-.page-parent{
-    position: absolute;
-    clip: rect(0,auto,auto,0);
-    width: 100%;
-    height: 100%;
-}
-.page{
-    overflow: hidden;
-    padding: 4rem 2vw 2vw 2vw;
-    margin: 0 0 15vh 0;
-    position: fixed;
-    top: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
 .spacer{
     width: 100%;
     height: calc(3.5*(1.6rem + 2.5vw));   
@@ -204,17 +180,7 @@ img{
 .nav-item a:hover{
     color: var(--light-sub-header);
 }
-/* Landing Header Animations */
-.rotate{
-    list-style: none;
-    margin-top: 0;
-    padding: 0;
-    margin-bottom: 0;
-    animation: rotate 22s infinite, rotateOp 22s infinite;
-}
-.rotate li{
-    padding:.4rem 0;
-}
+
 /* Style shortcuts */
 .shadowed{
     filter: drop-shadow(2px 4px 6px var(--drop-shadow));
@@ -361,17 +327,36 @@ img{
     font-family: 'Arual';
     font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.2rem;
     color:#ffefe4;
+    text-wrap: nowrap;
+    line-height: normal;
 }
+/* Landing rotate animations */
 #landing-rotate,#landing-spacer-rotate{
-    display: inline-block;
-    overflow: hidden;
-    height: 2.2rem;
-    padding: 0;
-    margin-bottom: -0.5rem;
-    margin: -0.5rem 0 -0.7rem 0;
-    animation-delay: .5s;
+    display:inline;
+    padding-left: 8px;
+    position: relative;
+}
+#landing-rotate span,#landing-spacer-rotate span{
+    position: absolute;
+    bottom:0;
+    animation: floatIn 20s infinite;
+    opacity: 0;
+}
+#landing-rotate span:nth-child(2), #landing-spacer-rotate span:nth-child(2){
+    animation-delay: 4s;
+}
+#landing-rotate span:nth-child(3), #landing-spacer-rotate span:nth-child(3){
+    animation-delay: 8s;
+}
+#landing-rotate span:nth-child(4), #landing-spacer-rotate span:nth-child(4){
+    animation-delay: 12s;
+}
+#landing-rotate span:nth-child(5), #landing-spacer-rotate span:nth-child(5){
+    animation-delay: 16s;
+}
+#landing-spacer-rotate .loopAnim{
+    animation:none;
 }
 #landing-spacer{
     margin-bottom: -3.75rem;
@@ -590,9 +575,9 @@ img{
 }
 #footer{
     background-color: var(--dark-bg);
-    height: 10vh;
     position: relative;
     min-height: 0vh;
+    padding: 2vw;
 }
 /* #region Responsive handling */
 @media screen and (max-width:910px){
@@ -610,8 +595,11 @@ img{
     #landing-text{
         display: none;
     }
-    #landing-text .rotate{
+    #landing-text .loopAnim{
         animation: none;
+    }
+    #landing-spacer-rotate .loopAnim{
+        animation: floatIn 20s infinite;
     }
     #landing-spacer{
         margin-top: -5vh;
@@ -629,18 +617,11 @@ img{
         font-size: 5rem;
         margin-bottom: -1rem;
     }
-    .rotate li{
-        padding: 0.65rem 0 0.35rem 0;
-    }
-    #landing-spacer-text .rotate{
-        animation: rotate 22s infinite, rotateOp 22s infinite;
-    }
     #landing-spacer-subheading{
         padding-left:1.2rem;
     }
     #landing-spacer-subheading *{
         font-size: 1rem;
-        line-height: 1rem;
         color:var(--dark-green);
     }
     #plant-wrapper{
@@ -687,7 +668,7 @@ img{
     #works-spacer h1{
         right:0;
     }
-    #about .page img{
+    #about img{
         float: none;
         width: 100%;
         shape-outside: none;
@@ -698,19 +679,6 @@ img{
     }
     #coding>div>div:nth-child(3){
         margin-top:0;
-    }
-    .page{
-        position: relative;
-        min-height: 0;
-        padding:2vw;
-        margin: 0;
-    }
-    .page-parent{
-        position: relative;
-    }
-    .page-wrapper{
-        min-height: 0;
-        padding-top:10vh;
     }
     .px-5{
         padding-left: 5vw!important;
@@ -744,52 +712,16 @@ img{
     90%{opacity: 10%;}
     100%{opacity:10%}
 }
-@keyframes rotate {
-    0%      { margin-top: 0rem; }
-    15%     { margin-top: 0rem; }
-    20%     { margin-top: -2rem; }
-    35%     { margin-top: -2rem; }
-    40%     { margin-top: -4rem; }
-    55%     { margin-top: -4rem; }
-    60%     { margin-top: -6rem; }
-    75%     { margin-top: -6rem; }
-    80%     { margin-top: -8rem; }
-    95%     { margin-top: -8rem; }
-    99.99%  { margin-top: -10rem; }
-    100%    { margin-top:-0rem; }
+@keyframes floatIn{
+    0%  {opacity: 0;}
+    5%  {opacity: 0; transform: translateY(150%);}
+    10% {opacity: 1; transform: translateY(0%);}
+    25% {opacity: 1; transform: translateY(0%);}
+    35% {opacity: 0; transform: translateY(-100%);}
+    80%  {opacity: 0;}
+    100%  {opacity: 0;}
 }
-@keyframes rotate-sm {
-    0%      { margin-top: 0.15rem; }
-    15%     { margin-top: 0.15rem; }
-    20%     { margin-top: -1.85rem; }
-    35%     { margin-top: -1.85rem; }
-    40%     { margin-top: -3.85rem; }
-    55%     { margin-top: -3.85rem; }
-    60%     { margin-top: -5.85rem; }
-    75%     { margin-top: -5.85rem; }
-    80%     { margin-top: -7.85rem; }
-    95%     { margin-top: -7.85rem; }
-    99.99%  { margin-top: -9.85rem; }
-    100%    { margin-top:-0rem; }
-}
-@keyframes rotateOp {
-    0%  { opacity: 100%; }
-    15% { opacity: 100%; }
-    17% { opacity: 0%; }
-    20% { opacity: 100%; }
-    35% { opacity: 100%; }
-    37% { opacity: 0%; }
-    40% { opacity: 100%; }
-    55% { opacity: 100%; }
-    57% { opacity: 0%; }
-    60% { opacity: 100%; }
-    75% { opacity: 100%; }
-    77% { opacity: 0%; }
-    80% { opacity: 100%; }
-    95% { opacity: 100%; }
-    97% { opacity: 0%; }
-    100%{ opacity: 100%; }
-}
+
 @keyframes float{
     0%{transform: rotate(0deg) translate(0, 0%);}
     25%{transform: rotate(3deg) translate(1%, -5%);}

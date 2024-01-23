@@ -56,12 +56,17 @@ plantObserver.observe(plantWrapper);
 //Stop looping animations when offscreen
 const loopStopper = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-          for (anim of entry.target.children) anim.style.animationPlayState='running';
-        }
-        else{
-            for(anim of entry.target.children) anim.style.animationPlayState='paused';
-        }
+      // if(entry.target.id==="landing-watcher")console.log('this');
+      // console.log(document.querySelectorAll("#landing-watcher .loopAnim, #landing-rotate .loopAnim"));
+      const list = entry.target.id==="landing-watcher" ? 
+        document.querySelectorAll("#landing-watcher .loopAnim, #landing-rotate .loopAnim"):
+        entry.target.children;
+      if(entry.isIntersecting){
+        for (anim of list) anim.style.animationPlayState='running';
+      }
+      else{
+          for(anim of list) anim.style.animationPlayState='paused';
+      }
     });
 });
 const loopAnimElem = document.querySelectorAll(".watcher");
