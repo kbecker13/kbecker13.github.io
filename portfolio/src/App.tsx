@@ -1,4 +1,4 @@
-import './App.css'
+import './styles.css'
 import bgTreeL from "./assets/welcomePage/bgTreeL.png"
 import bgTreeR from "./assets/welcomePage/bgTreeR.png"
 import mgTreeL from "./assets/welcomePage/mgTreeL.png"
@@ -12,9 +12,9 @@ import useWindowDimensions from './hooks.ts';
 function App() {
   //todo clean the repetitive stuff with classes and styles
   const { width, height } = useWindowDimensions();
-  const calcHeight = Math.floor((width / height) * 100);
+  const calcHeight = Math.floor((width / height) * 80);
   const imageSetting = `min-h-full max-h-[200%] w-auto absolute bottom-0 object-cover`;
-  const ultraWidescreenBreakpoint = 260;
+  const ultraWidescreenBreakpoint = 200;
 
   type ImageData = {
     src: string;
@@ -32,7 +32,7 @@ function App() {
   ];
   return (
       <div className="size-full relative bg-sunlight overflow-hidden">
-        <div className=''/>
+        <div id="underground" className="bg-underground w-full h-[20%] absolute bottom-0"/>
         <div style={{ height: `${calcHeight}%` }} className={`min-h-full max-h-[200%] w-full bg-repeat-x bg-size-[auto_100%] bg-[url("./assets/welcomePage/ground.png")] absolute bottom-0 `}/>
         {images.map((image, index) => (
           <img src={image.src} alt={image.alt} key={index} style={{ height: `${calcHeight}%` }} className={`${imageSetting} ${image.extraClassInfo}`} />
