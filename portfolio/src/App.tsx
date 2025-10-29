@@ -6,7 +6,8 @@ import mgTreeR from "./assets/welcomePage/mgTreeR.png"
 import bushL from "./assets/welcomePage/bushL.png"
 import bushR from "./assets/welcomePage/bushR.png"
 import tree from "./assets/welcomePage/tree.png"
-import useWindowDimensions from './hooks.ts';
+import useWindowDimensions from './hooks/useWindowDimensions.ts';
+
 
 //convert each image into a partial component
 function App() {
