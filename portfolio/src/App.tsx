@@ -13,7 +13,8 @@ function App() {
   //todo clean the repetitive stuff with classes and styles
   const { width, height } = useWindowDimensions();
   const calcHeight = Math.floor((width / height) * 80);
-  const imageSetting = `min-h-full max-h-[200%] w-auto absolute bottom-0 object-cover`;
+  const calcHeightBounded = Math.min(Math.max(calcHeight, 100), 200);
+  const imageSetting = `w-auto absolute bottom-0 object-cover`;
   const ultraWidescreenBreakpoint = 200;
 
   type ImageData = {
@@ -31,11 +32,11 @@ function App() {
 {src: tree, alt: "Tree", extraClassInfo: `left-1/2 transform -translate-x-1/2` }
   ];
   return (
-      <div className="size-full relative bg-sunlight overflow-hidden">
-        <div id="underground" className="bg-underground w-full h-[20%] absolute bottom-0"/>
-        <div style={{ height: `${calcHeight}%` }} className={`min-h-full max-h-[200%] w-full bg-repeat-x bg-size-[auto_100%] bg-[url("./assets/welcomePage/ground.png")] absolute bottom-0 `}/>
+      <div className="min-h-screen relative bg-sunlight overflow-hidden">
+        <div id="underground" style={{height:`${Math.floor(calcHeightBounded*.15)}%`}} className="bg-underground w-full absolute bottom-0"/>
+        <div style={{ height: `${calcHeightBounded}%` }} className={`w-full bg-repeat-x bg-size-[auto_100%] bg-[url("./assets/welcomePage/ground.png")] absolute bottom-0 `}/>
         {images.map((image, index) => (
-          <img src={image.src} alt={image.alt} key={index} style={{ height: `${calcHeight}%` }} className={`${imageSetting} ${image.extraClassInfo}`} />
+          <img src={image.src} alt={image.alt} key={index} style={{ height: `${calcHeightBounded}%` }} className={`${imageSetting} ${image.extraClassInfo}`} />
         ))}
         
       </div>
